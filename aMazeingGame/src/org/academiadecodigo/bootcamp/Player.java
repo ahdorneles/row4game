@@ -43,25 +43,21 @@ public class Player implements KeyboardHandler {
         eventLeft.setKey(KeyboardEvent.KEY_LEFT);
         k.addEventListener(eventLeft);
     }
-
     @Override
     public void keyPressed(KeyboardEvent keyboardEvent) {
         switch (keyboardEvent.getKey()) {
             case KeyboardEvent.KEY_UP:
                 avatar.setDirection(GridDirection.UP);
-                avatar.move();
+
                 break;
             case KeyboardEvent.KEY_DOWN:
                 avatar.setDirection(GridDirection.DOWN);
-                avatar.move();
                 break;
             case KeyboardEvent.KEY_RIGHT:
                 avatar.setDirection(GridDirection.RIGHT);
-                avatar.move();
                 break;
             case KeyboardEvent.KEY_LEFT:
                 avatar.setDirection(GridDirection.LEFT);
-                avatar.move();
                 break;
         }
     }

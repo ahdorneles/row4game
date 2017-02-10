@@ -22,8 +22,7 @@ public class CollisionDetector {
     private SimpleGfxGridPosition gridPosition;
     private ArrayList<GameObject> objectList;
 
-
-    public boolean collided() {
+/*    public boolean collided() {
         switch (avatar.getDirection()) {
 
             case UP:
@@ -39,10 +38,9 @@ public class CollisionDetector {
             case LEFT:
                 return (avatar.getPos(). // placeholder (getCol() - 1) == gameObjects.getPos());
         }
-    }
+    }*/
 
-
-    public boolean getCollided() {
+ /*   public boolean getCollided() {
         return collided();
-    }
+    }*/
 }

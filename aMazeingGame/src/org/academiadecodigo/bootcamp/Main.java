@@ -1,6 +1,7 @@
 package org.academiadecodigo.bootcamp;
 
 
+import org.academiadecodigo.bootcamp.game.Game;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 
 /**
@@ -9,8 +10,9 @@ import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 public class Main {
     public static void main(String[] args) {
 
+    Game game = new Game(1000);
+    game.init();
+    
 
-    Rectangle rectangle = new Rectangle(10,10,800,600);
-    rectangle.draw();
     }
 }

@@ -3,6 +3,7 @@ import org.academiadecodigo.bootcamp.game.CollisionDetector;
 import org.academiadecodigo.bootcamp.grid.Grid;
 import org.academiadecodigo.bootcamp.grid.GridDirection;
 import org.academiadecodigo.bootcamp.grid.position.SimpleGfxGridPosition;
+import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 
 /**
@@ -13,11 +14,13 @@ public class Avatar extends GameObject {
     private GridDirection direction;
     private Grid grid;
     private CollisionDetector collisionDetector;
+    Rectangle rectangle;
 
 
     public Avatar(SimpleGfxGridPosition position) {
         this.position = position;
-        Rectangle rectangle = new Rectangle(2,3,10,10);
+        rectangle = new Rectangle((getPos().getCol() * 25)+10,(getPos().getRow() * 25)+10,25,25);
+        rectangle.setColor(Color.BLUE);
         rectangle.fill();
     }
     public SimpleGfxGridPosition getPos() {

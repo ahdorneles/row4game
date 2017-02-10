@@ -15,4 +15,7 @@ public class SimpleGfxGridPosition extends AbstractGridPosition {
         super(cols, rows, grid);
     }
 
+
+
+
 }

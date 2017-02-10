@@ -5,6 +5,8 @@ import org.academiadecodigo.bootcamp.gameObject.GameObject;
 import org.academiadecodigo.bootcamp.gameObject.ObjectType;
 import org.academiadecodigo.bootcamp.gameObject.Wall;
 import org.academiadecodigo.bootcamp.grid.position.SimpleGfxGridPosition;
+import org.academiadecodigo.simplegraphics.graphics.Color;
+import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 
 import java.util.ArrayList;
 
@@ -13,10 +15,10 @@ import java.util.ArrayList;
  */
 public class SimpleGfxGrid implements Grid {
 
-    public static final int PADDING = 10;
+    private final int PADDING = 10;
     private int cols;
     private int rows;
-    public static final int CELL_SIZE = 25;
+    private final int CELL_SIZE = 25;
     private ArrayList<GameObject> objectList;
 
     public SimpleGfxGrid(int cols, int rows) {
@@ -25,13 +27,16 @@ public class SimpleGfxGrid implements Grid {
     }
 
 
+
     @Override
     public void init(int[][] array) {
 
         objectList = new ArrayList<>();
 
         for (int i = 0; i < array.length; i++) {
+            System.out.println("row" + i);
             for (int j = 0; j < array[i].length; j++) {
+                System.out.println("col" + j);
 
                 int block = array[i][j];
 
@@ -41,15 +46,17 @@ public class SimpleGfxGrid implements Grid {
                         break;
 
                     case 1:
-                        objectList.add(create(i, j, ObjectType.AVATAR));
+                        objectList.add(create(j, i, ObjectType.AVATAR));
                         break;
 
                     case 2:
-                        objectList.add(create(i, j, ObjectType.WALL));
+                        objectList.add(create(j, i, ObjectType.WALL));
                         break;
                 }
             }
         }
+
+        System.out.println(objectList.size());
 
     }
 
@@ -66,9 +73,8 @@ public class SimpleGfxGrid implements Grid {
                 break;
 
             case WALL:
-                Wall wall = new Wall();
                 SimpleGfxGridPosition position1 = new SimpleGfxGridPosition(i, j, this);
-                wall.setPosition(position1);
+                Wall wall = new Wall(position1);
                 returnObject = wall;
                 break;
 
@@ -87,7 +93,7 @@ public class SimpleGfxGrid implements Grid {
         return rows;
     }
 
-    public static int getCellSize() {
+    public int getCellSize() {
         return CELL_SIZE;
     }
 
@@ -97,6 +103,14 @@ public class SimpleGfxGrid implements Grid {
 
     public int getWidth() {
         return getCols() * getCellSize();
+    }
+
+    public int getPADDING() {
+        return PADDING;
+    }
+
+    public int getCELL_SIZE() {
+        return CELL_SIZE;
     }
 }
 
