@@ -1,27 +1,65 @@
 package org.academiadecodigo.bootcamp.gameObject;
-
-import org.academiadecodigo.bootcamp.grid.position.GridPosition;
-import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
-import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
+import org.academiadecodigo.bootcamp.game.CollisionDetector;
+import org.academiadecodigo.bootcamp.grid.Grid;
+import org.academiadecodigo.bootcamp.grid.GridDirection;
+import org.academiadecodigo.bootcamp.grid.position.SimpleGfxGridPosition;
+import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 
 /**
  * Created by codecadet on 06/02/2017.
  */
-public class Avatar extends GameObject implements Movable, Collidable, KeyboardHandler {
-     private GridPosition gridPosition;
+public class Avatar extends GameObject {
+    private SimpleGfxGridPosition position;
+    private GridDirection direction;
+    private Grid grid;
+    private CollisionDetector collisionDetector;
 
-    @Override
+
+    public Avatar(SimpleGfxGridPosition position) {
+        this.position = position;
+        Rectangle rectangle = new Rectangle(2,3,10,10);
+        rectangle.fill();
+    }
+    public SimpleGfxGridPosition getPos() {
+        return position;
+    }
+    public void setPosition(SimpleGfxGridPosition position) {
+        this.position = position;
+    }
+    public void setDirection(GridDirection direction) {
+        this.direction = direction;
+    }
+    public GridDirection getDirection() {
+        return direction;
+    }
+
+  /*  @Override
     public void move() {
-
-    }
-
-    @Override
-    public void keyPressed(KeyboardEvent keyboardEvent) {
-
-    }
-
-    @Override
-    public void keyReleased(KeyboardEvent keyboardEvent) {
-
-    }
+        switch (direction) {
+            case UP:
+                if (!collisionDetector.getCollided()) {
+                    this.getPos().setRow(getRow() - 1);
+                }
+                break;
+            case DOWN:
+                if (!collisionDetector.getCollided()) {
+                    this.getPos().setRow(getRow() + 1);
+                }
+                break;
+            case LEFT:
+                if (!collisionDetector.getCollided()) {
+                    this.getPos().setCol(getCol() - 1);
+                }
+                break;
+            case RIGHT:
+                if (!collisionDetector.getCollided()) {
+                    this.getPos().setCol(getCol() + 1);
+                }
+                break;
+            default:
+                // Exception
+                System.out.println("Bananas");
+                break;
+        }
+    }*/
 }

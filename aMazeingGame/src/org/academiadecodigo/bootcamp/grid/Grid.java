@@ -5,6 +5,10 @@ package org.academiadecodigo.bootcamp.grid;
  */
 public interface Grid {
 
-    public void init();
+    public void init(int[][] array);
+
+    public int getCols();
+
+    public int getRows();
 
 }
