@@ -1,5 +1,6 @@
 package org.academiadecodigo.bootcamp.gameObject;
 
+import org.academiadecodigo.bootcamp.grid.GridDirection;
 import org.academiadecodigo.bootcamp.grid.SimpleGfxGrid;
 import org.academiadecodigo.bootcamp.grid.position.SimpleGfxGridPosition;
 import org.academiadecodigo.simplegraphics.graphics.Color;
@@ -26,5 +27,10 @@ public class Wall extends GameObject {
 
     public void setPosition(SimpleGfxGridPosition position) {
         this.position = position;
+    }
+
+    @Override
+    public void move(GridDirection direction) {
+
     }
 }

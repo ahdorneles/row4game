@@ -82,6 +82,9 @@ public class SimpleGfxGrid implements Grid {
         return returnObject;
     }
 
+    public ArrayList<GameObject> getObjectList() {
+        return objectList;
+    }
 
     @Override
     public int getCols() {
@@ -113,5 +116,7 @@ public class SimpleGfxGrid implements Grid {
         return CELL_SIZE;
     }
 }
+
+
 
 

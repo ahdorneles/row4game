@@ -1,4 +1,5 @@
 package org.academiadecodigo.bootcamp.gameObject;
+
 import org.academiadecodigo.bootcamp.game.CollisionDetector;
 import org.academiadecodigo.bootcamp.grid.Grid;
 import org.academiadecodigo.bootcamp.grid.GridDirection;
@@ -19,50 +20,76 @@ public class Avatar extends GameObject {
 
     public Avatar(SimpleGfxGridPosition position) {
         this.position = position;
-        rectangle = new Rectangle((getPos().getCol() * 25)+10,(getPos().getRow() * 25)+10,25,25);
+        rectangle = new Rectangle((getPos().getCol() * 25) + 10, (getPos().getRow() * 25) + 10, 25, 25);
         rectangle.setColor(Color.BLUE);
         rectangle.fill();
+
     }
+
     public SimpleGfxGridPosition getPos() {
         return position;
     }
+
     public void setPosition(SimpleGfxGridPosition position) {
         this.position = position;
     }
+
     public void setDirection(GridDirection direction) {
         this.direction = direction;
     }
-    public GridDirection getDirection() {
+
+    public GridDirection getDirection()
+    {
         return direction;
     }
 
-  /*  @Override
-    public void move() {
+    public void moveInDirection(GridDirection direction) {
+
         switch (direction) {
             case UP:
-                if (!collisionDetector.getCollided()) {
-                    this.getPos().setRow(getRow() - 1);
-                }
+                moveUp();
                 break;
             case DOWN:
-                if (!collisionDetector.getCollided()) {
-                    this.getPos().setRow(getRow() + 1);
-                }
-                break;
-            case LEFT:
-                if (!collisionDetector.getCollided()) {
-                    this.getPos().setCol(getCol() - 1);
-                }
+                moveDown();
                 break;
             case RIGHT:
-                if (!collisionDetector.getCollided()) {
-                    this.getPos().setCol(getCol() + 1);
-                }
+                moveRight();
                 break;
-            default:
-                // Exception
-                System.out.println("Bananas");
+            case LEFT:
+                moveLeft();
                 break;
+
         }
-    }*/
+
+    }
+
+
+
+    private void moveUp() {
+        int inicialCol = this.getPos().getCol();
+        int inicialRow = this.getPos().getRow();
+
+
+        moveInDirection(direction);
+
+        rectangle.translate((getPos().getRow() - inicialRow) * 25, (getPos().getCol() - inicialCol) * 25);
+
+
+    }
+    private void moveDown() {
+        this.getPos().setRow((getPos().getRow()* 25) + 25);
+    }
+
+    private void moveRight() {
+        this.getPos().setCol(getPos().getRow() + 1);
+    }
+    private void moveLeft() {
+        this.getPos().setCol(getPos().getRow() - 1);
+    }
+
+    @Override
+    public void move(GridDirection direction) {
+        moveInDirection(direction);
+
+    }
 }
