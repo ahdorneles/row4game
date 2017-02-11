@@ -16,15 +16,13 @@ import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 /**
  * Created by codecadet on 06/02/2017.
  */
-public class Avatar extends GameObject implements KeyboardHandler{
+public class Avatar extends GameObject {
     private static final double SPEED = 25;
     private SimpleGfxGridPosition position;
     private GridDirection direction;
     private SimpleGfxGrid grid;
     private CollisionDetector collisionDetector;
     private Rectangle rectangle;
-    private Keyboard k;
-
 
 
     public Avatar(SimpleGfxGridPosition position) {
@@ -34,40 +32,6 @@ public class Avatar extends GameObject implements KeyboardHandler{
         rectangle = new Rectangle((getPos().getCol() * 25) + 10, (getPos().getRow() * 25) + 10, 25, 25);
         rectangle.setColor(Color.BLUE);
         rectangle.fill();
-
-        k = new Keyboard((KeyboardHandler) this);
-        KeyboardEvent up = new KeyboardEvent();
-        KeyboardEvent down = new KeyboardEvent();
-        KeyboardEvent left = new KeyboardEvent();
-        KeyboardEvent right = new KeyboardEvent();
-        KeyboardEvent reset = new KeyboardEvent();
-        KeyboardEvent start = new KeyboardEvent();
-        KeyboardEvent quit = new KeyboardEvent();
-
-        up.setKey(KeyboardEvent.KEY_UP);
-        down.setKey(KeyboardEvent.KEY_DOWN);
-        left.setKey(KeyboardEvent.KEY_LEFT);
-        right.setKey(KeyboardEvent.KEY_RIGHT);
-        reset.setKey(KeyboardEvent.KEY_R);
-        start.setKey(KeyboardEvent.KEY_SPACE);
-        quit.setKey(KeyboardEvent.KEY_Q);
-
-        up.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
-        down.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
-        left.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
-        right.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
-        reset.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
-        start.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
-        quit.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
-
-        k.addEventListener(up);
-        k.addEventListener(down);
-        k.addEventListener(left);
-        k.addEventListener(right);
-        k.addEventListener(reset);
-        k.addEventListener(start);
-        k.addEventListener(quit);
-
     }
 
     public SimpleGfxGridPosition getPos() {
@@ -140,40 +104,7 @@ public class Avatar extends GameObject implements KeyboardHandler{
         return rectangle;
     }
 
-    @Override
-    public void keyPressed(KeyboardEvent keyboardEvent) {
 
-
-        for (GameObject avatar1 : grid.getObjectList()) {
-            if (avatar1 instanceof Avatar) {
-
-                Avatar avatar = (Avatar) avatar1;
-
-                System.out.println("Posição do avatar" + ((Avatar) avatar).getPos());
-                System.out.println("List size " + grid.getObjectList().size());
-
-
-                switch (keyboardEvent.getKey()) {
-                    case KeyboardEvent.KEY_UP:
-                        avatar.move(GridDirection.UP);
-                        break;
-                    case KeyboardEvent.KEY_DOWN:
-                        avatar.move(GridDirection.DOWN);
-                        break;
-                    case KeyboardEvent.KEY_LEFT:
-                        avatar.move(GridDirection.LEFT);
-                        break;
-                    case KeyboardEvent.KEY_RIGHT:
-                        avatar.move(GridDirection.RIGHT);
-                        break;
-
-                }
-            }
-        }
-    }
-
-    @Override
-    public void keyReleased(KeyboardEvent keyboardEvent) {
-
-    }
 }
+
+
