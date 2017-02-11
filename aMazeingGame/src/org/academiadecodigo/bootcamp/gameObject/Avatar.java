@@ -11,6 +11,7 @@ import org.academiadecodigo.simplegraphics.graphics.Rectangle;
  * Created by codecadet on 06/02/2017.
  */
 public class Avatar extends GameObject {
+    private static final double SPEED = 12.5;
     private SimpleGfxGridPosition position;
     private GridDirection direction;
     //private SimpleGfxGrid grid;
@@ -56,25 +57,27 @@ public class Avatar extends GameObject {
                 this.position.setRow(getPos().getRow() - 1 );
                 int finalRowUp = getPos().getRow();
                 System.out.println("Direção " + direction);
-                rectangle.translate(0,(finalRowUp-initialRow));
+                rectangle.translate(0,(finalRowUp-initialRow)*SPEED);
                 break;
+
             case DOWN:
                 this.position.setRow(getPos().getRow() + 1);
                 int finalRowDown = getPos().getRow();
                 System.out.println("Direção " + direction);
-                rectangle.translate(0,(finalRowDown-initialRow) );
+                rectangle.translate(0,(finalRowDown-initialRow)*SPEED );
                 break;
+
             case RIGHT:
                 this.position.setCol(getPos().getCol() + 1);
                 int finalColRight = getPos().getCol();
                 System.out.println("Direção " + direction);
-                rectangle.translate((finalColRight-initialRow),0 );
+                rectangle.translate((finalColRight-initialCol)*SPEED,0 );
                 break;
             case LEFT:
                 this.position.setCol(getPos().getCol() - 1);
                 int finalColLeft = getPos().getCol();
                 System.out.println("Direção " + direction);
-                rectangle.translate((finalColLeft-initialRow),0) ;
+                rectangle.translate((finalColLeft-initialCol)*SPEED,0) ;
                 break;
 
         }
