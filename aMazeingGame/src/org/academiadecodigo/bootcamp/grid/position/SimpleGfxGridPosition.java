@@ -8,16 +8,12 @@ import org.academiadecodigo.bootcamp.grid.GridDirection;
  */
 public class SimpleGfxGridPosition extends AbstractGridPosition {
 
-    private Grid grid;
-    private int col;
-    private int row;
-
     public SimpleGfxGridPosition(int col, int row, Grid grid) {
         super(col, row, grid);
     }
 
     @Override
     public String toString() {
-       return  "Coluna " + col + " Linha "+ row;
+       return  "Coluna " + getCol() + " Linha "+ getRow();
     }
 }

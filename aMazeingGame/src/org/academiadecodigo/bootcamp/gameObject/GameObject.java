@@ -9,4 +9,6 @@ public abstract class GameObject {
 
 
     public abstract void move(GridDirection direction);
+
+
 }

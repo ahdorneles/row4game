@@ -1,8 +1,8 @@
 package org.academiadecodigo.bootcamp.gameObject;
 
 import org.academiadecodigo.bootcamp.game.CollisionDetector;
-import org.academiadecodigo.bootcamp.grid.Grid;
 import org.academiadecodigo.bootcamp.grid.GridDirection;
+import org.academiadecodigo.bootcamp.grid.SimpleGfxGrid;
 import org.academiadecodigo.bootcamp.grid.position.SimpleGfxGridPosition;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
@@ -13,7 +13,7 @@ import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 public class Avatar extends GameObject {
     private SimpleGfxGridPosition position;
     private GridDirection direction;
-    private Grid grid;
+    //private SimpleGfxGrid grid;
     private CollisionDetector collisionDetector;
     Rectangle rectangle;
 
@@ -38,58 +38,47 @@ public class Avatar extends GameObject {
         this.direction = direction;
     }
 
-    public GridDirection getDirection()
-    {
+    public GridDirection getDirection() {
         return direction;
     }
 
-    public void moveInDirection(GridDirection direction) {
+
+    @Override
+    public void move(GridDirection direction) {
+        int initialCol = this.getPos().getCol();
+        int initialRow = this.getPos().getRow();
+        System.out.println("Coluna " + initialCol);
+        System.out.println("Linha " + initialRow);
+
 
         switch (direction) {
             case UP:
-                moveUp();
+                this.position.setRow(getPos().getRow() - 1 );
+                int finalRowUp = getPos().getRow();
+                System.out.println("Direção " + direction);
+                rectangle.translate(0,(finalRowUp-initialRow));
                 break;
             case DOWN:
-                moveDown();
+                this.position.setRow(getPos().getRow() + 1);
+                int finalRowDown = getPos().getRow();
+                System.out.println("Direção " + direction);
+                rectangle.translate(0,(finalRowDown-initialRow) );
                 break;
             case RIGHT:
-                moveRight();
+                this.position.setCol(getPos().getCol() + 1);
+                int finalColRight = getPos().getCol();
+                System.out.println("Direção " + direction);
+                rectangle.translate((finalColRight-initialRow),0 );
                 break;
             case LEFT:
-                moveLeft();
+                this.position.setCol(getPos().getCol() - 1);
+                int finalColLeft = getPos().getCol();
+                System.out.println("Direção " + direction);
+                rectangle.translate((finalColLeft-initialRow),0) ;
                 break;
 
         }
 
-    }
-
-
-
-    private void moveUp() {
-        int inicialCol = this.getPos().getCol();
-        int inicialRow = this.getPos().getRow();
-
-
-        moveInDirection(direction);
-
-        rectangle.translate((getPos().getRow() - inicialRow) * 25, (getPos().getCol() - inicialCol) * 25);
-
-
-    }
-    private void moveDown() {
-        this.getPos().setRow((getPos().getRow()* 25) + 25);
-    }
-
-    private void moveRight() {
-        this.getPos().setCol(getPos().getRow() + 1);
-    }
-    private void moveLeft() {
-        this.getPos().setCol(getPos().getRow() - 1);
-    }
-
-    @Override
-    public void move(GridDirection direction) {
-        moveInDirection(direction);
 
     }
 }
