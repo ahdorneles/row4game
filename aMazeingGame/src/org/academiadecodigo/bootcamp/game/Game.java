@@ -63,12 +63,15 @@ public class Game implements KeyboardHandler {
             Level currentLevel = Level.LEVEL_1;
 
             if (levelComplete()) {
-                for (GameObject o:
-                     objectList) {
+                for (GameObject o: objectList) {
                     o.getRectangle().delete();
                 }
                 objectList.clear();
+
+                System.out.println("---------------------> IS THIS EMPTY? " + objectList.size());
+
                 grid.init(nextLevel(currentLevel));
+
                 currentLevel = Level.values()[currentLevel.ordinal() + 1];
 
             }
