@@ -1,4 +1,6 @@
-
+**/.idea/
+**/out/
+**/*.iml
 # Created by https://www.gitignore.io/api/linux,intellij,macos,vim,windows
 
 ### Intellij ###
