@@ -6,5 +6,6 @@ package org.academiadecodigo.bootcamp.gameObject;
 public enum ObjectType {
 
     WALL,
-    AVATAR
+    AVATAR,
+    FINISH_LINE
 }

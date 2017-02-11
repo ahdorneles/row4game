@@ -1,9 +1,6 @@
 package org.academiadecodigo.bootcamp.grid;
 
-import org.academiadecodigo.bootcamp.gameObject.Avatar;
-import org.academiadecodigo.bootcamp.gameObject.GameObject;
-import org.academiadecodigo.bootcamp.gameObject.ObjectType;
-import org.academiadecodigo.bootcamp.gameObject.Wall;
+import org.academiadecodigo.bootcamp.gameObject.*;
 import org.academiadecodigo.bootcamp.grid.position.SimpleGfxGridPosition;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
@@ -52,6 +49,9 @@ public class SimpleGfxGrid implements Grid {
                     case 2:
                         objectList.add(create(j, i, ObjectType.WALL));
                         break;
+
+                    case 3:
+                        objectList.add(create(j, i, ObjectType.FINISH_LINE));
                 }
             }
         }
@@ -76,6 +76,12 @@ public class SimpleGfxGrid implements Grid {
                 SimpleGfxGridPosition position1 = new SimpleGfxGridPosition(i, j, this);
                 Wall wall = new Wall(position1);
                 returnObject = wall;
+                break;
+
+            case FINISH_LINE:
+                SimpleGfxGridPosition position2 = new SimpleGfxGridPosition(i, j, this);
+                FinishLine line = new FinishLine(position2);
+                returnObject = line;
                 break;
 
         }
@@ -115,8 +121,6 @@ public class SimpleGfxGrid implements Grid {
     public int getCELL_SIZE() {
         return CELL_SIZE;
     }
-
-
 }
 
 

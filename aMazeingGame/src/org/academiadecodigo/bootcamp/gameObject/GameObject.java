@@ -7,8 +7,4 @@ import org.academiadecodigo.bootcamp.grid.GridDirection;
  */
 public abstract class GameObject {
 
-
-    public abstract void move(GridDirection direction);
-
-
 }

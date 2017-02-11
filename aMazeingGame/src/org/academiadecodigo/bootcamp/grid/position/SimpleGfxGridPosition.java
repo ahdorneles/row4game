@@ -21,4 +21,12 @@ public class SimpleGfxGridPosition extends AbstractGridPosition {
     public String toString() {
        return  "Coluna " + getCol() + " Linha "+ getRow();
     }
+
+    public boolean compare(SimpleGfxGridPosition position) {
+
+        if (getCol() == position.getCol() && getRow() == position.getRow()) {
+            return true;
+        }
+        return false;
+    }
 }

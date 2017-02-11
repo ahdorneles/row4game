@@ -1,23 +1,23 @@
 package org.academiadecodigo.bootcamp.gameObject;
 
-import org.academiadecodigo.bootcamp.grid.GridDirection;
-import org.academiadecodigo.bootcamp.grid.SimpleGfxGrid;
 import org.academiadecodigo.bootcamp.grid.position.SimpleGfxGridPosition;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 
+import java.security.Signature;
+
 /**
- * Created by codecadet on 06/02/2017.
+ * Created by codecadet on 11/02/17.
  */
-public class Wall extends GameObject {
+public class FinishLine extends GameObject{
 
     private SimpleGfxGridPosition position;
     private Rectangle rectangle;
 
-    public Wall(SimpleGfxGridPosition simpleGfxGridPosition) {
+    public FinishLine (SimpleGfxGridPosition simpleGfxGridPosition) {
         position = simpleGfxGridPosition;
-        rectangle = new Rectangle((getPos().getCol() * 25) + 10,(getPos().getRow()* 25) + 10 ,25,25);
-        rectangle.setColor(Color.GREEN);
+        rectangle = new Rectangle((getPos().getCol() * 25) + 10, (getPos().getRow() * 25) + 10, 25, 25);
+        rectangle.setColor(Color.GRAY);
         rectangle.fill();
     }
 

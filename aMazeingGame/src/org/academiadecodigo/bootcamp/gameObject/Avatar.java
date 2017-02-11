@@ -47,8 +47,6 @@ public class Avatar extends GameObject {
         return direction;
     }
 
-
-    @Override
     public void move(GridDirection direction) {
         int initialCol = this.getPos().getCol();
         int initialRow = this.getPos().getRow();

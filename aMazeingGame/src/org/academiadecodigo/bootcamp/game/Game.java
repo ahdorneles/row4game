@@ -2,6 +2,7 @@ package org.academiadecodigo.bootcamp.game;
 
 import org.academiadecodigo.bootcamp.Player;
 import org.academiadecodigo.bootcamp.gameObject.Avatar;
+import org.academiadecodigo.bootcamp.gameObject.FinishLine;
 import org.academiadecodigo.bootcamp.gameObject.GameObject;
 import org.academiadecodigo.bootcamp.grid.Grid;
 import org.academiadecodigo.bootcamp.grid.GridDirection;
@@ -25,12 +26,9 @@ public class Game implements KeyboardHandler {
 
     private int delay;
     private SimpleGfxGrid grid;
-    private Avatar avatar;
-/*    private CollisionDetector collider;*/
     private boolean runningGame = true;
-    private Level level;
     private Keyboard k;
-    private ArrayList <GameObject> objectList;
+    private ArrayList<GameObject> objectList;
 
 
     public Game(int delay) {/// not sure if needs it
@@ -84,27 +82,67 @@ public class Game implements KeyboardHandler {
         k.addEventListener(quit);
 
 
-
-
-
     }
 
     public void start() throws InterruptedException {
 
-        while (runningGame == true) {
+        while (runningGame) {
             java.lang.Thread.sleep(delay);
 
-          /*  moveAvatar();*/
-        }
+            Level currentLevel = Level.LEVEL_1;
 
+            if (levelComplete()) {
+                objectList.clear();
+                grid.init(nextLevel(currentLevel));
+                currentLevel = Level.values()[currentLevel.ordinal() + 1];
+
+            }
+        }
+    }
+
+    private int[][] nextLevel(Level currentLevel) {
+        return Level.values()[currentLevel.ordinal() + 1].getLevel();
+    }
+
+    private boolean levelComplete() {
+        int totalChecks = 0;
+
+        int positiveChecks = 0;
+
+        for (GameObject a : objectList) {
+            if (a instanceof Avatar) {
+                totalChecks++;
+                positiveChecks += confirmation((Avatar) a);
+
+            }
+            if (totalChecks == positiveChecks) {
+                return true;
+            }
+
+        }
+        return false;
+    }
+
+    private int confirmation(Avatar a) {
+        for (GameObject f : objectList) {
+            if (f instanceof FinishLine) {
+                if (a.getPos().compare(((FinishLine) f).getPos())) {
+                    return 1;
+                }
+            }
+
+        }
+        return 0;
     }
 
     @Override
     public void keyPressed(KeyboardEvent keyboardEvent) {
 
 
-        for (GameObject avatar : objectList) {
-            if (avatar instanceof Avatar) {
+        for (GameObject avatar1 : objectList) {
+            if (avatar1 instanceof Avatar) {
+
+                Avatar avatar = (Avatar) avatar1;
 
                 System.out.println("Posição do avatar" + ((Avatar) avatar).getPos());
                 System.out.println("List size " + objectList.size());
