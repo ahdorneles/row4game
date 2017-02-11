@@ -12,6 +12,7 @@ public class Main {
 
     Game game = new Game(1000);
     game.init();
+        game.start();
     
 
     }

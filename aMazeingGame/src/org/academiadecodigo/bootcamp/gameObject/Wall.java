@@ -28,4 +28,8 @@ public class Wall extends GameObject {
     public void setPosition(SimpleGfxGridPosition position) {
         this.position = position;
     }
+
+    public Rectangle getRectangle() {
+        return rectangle;
+    }
 }

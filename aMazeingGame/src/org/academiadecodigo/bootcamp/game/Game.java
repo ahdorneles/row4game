@@ -48,50 +48,25 @@ public class Game implements KeyboardHandler {
         grid.init(Level.LEVEL_1.getLevel());
         objectList = grid.getObjectList();
 
-        k = new Keyboard(this);
-        KeyboardEvent up = new KeyboardEvent();
-        KeyboardEvent down = new KeyboardEvent();
-        KeyboardEvent left = new KeyboardEvent();
-        KeyboardEvent right = new KeyboardEvent();
-        KeyboardEvent reset = new KeyboardEvent();
-        KeyboardEvent start = new KeyboardEvent();
-        KeyboardEvent quit = new KeyboardEvent();
-
-        up.setKey(KeyboardEvent.KEY_UP);
-        down.setKey(KeyboardEvent.KEY_DOWN);
-        left.setKey(KeyboardEvent.KEY_LEFT);
-        right.setKey(KeyboardEvent.KEY_RIGHT);
-        reset.setKey(KeyboardEvent.KEY_R);
-        start.setKey(KeyboardEvent.KEY_SPACE);
-        quit.setKey(KeyboardEvent.KEY_Q);
-
-        up.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
-        down.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
-        left.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
-        right.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
-        reset.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
-        start.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
-        quit.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
-
-        k.addEventListener(up);
-        k.addEventListener(down);
-        k.addEventListener(left);
-        k.addEventListener(right);
-        k.addEventListener(reset);
-        k.addEventListener(start);
-        k.addEventListener(quit);
-
 
     }
 
-    public void start() throws InterruptedException {
+    public void start() {
 
         while (runningGame) {
-            java.lang.Thread.sleep(delay);
+            try {
+                java.lang.Thread.sleep(delay);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
 
             Level currentLevel = Level.LEVEL_1;
 
             if (levelComplete()) {
+                for (GameObject o:
+                     objectList) {
+                    o.getRectangle().delete();
+                }
                 objectList.clear();
                 grid.init(nextLevel(currentLevel));
                 currentLevel = Level.values()[currentLevel.ordinal() + 1];
@@ -105,17 +80,22 @@ public class Game implements KeyboardHandler {
     }
 
     private boolean levelComplete() {
+        System.out.println("lvlcomp");
+
         int totalChecks = 0;
 
         int positiveChecks = 0;
 
         for (GameObject a : objectList) {
             if (a instanceof Avatar) {
+                System.out.println("positive checks");
+                Avatar avatar = (Avatar) a;
                 totalChecks++;
-                positiveChecks += confirmation((Avatar) a);
-
+                System.out.println(totalChecks + " total");
+                positiveChecks += confirmation(avatar);
             }
-            if (totalChecks == positiveChecks) {
+
+            if (totalChecks != 0 && totalChecks == positiveChecks) {
                 return true;
             }
 
@@ -124,9 +104,13 @@ public class Game implements KeyboardHandler {
     }
 
     private int confirmation(Avatar a) {
+        System.out.println("first conf");
         for (GameObject f : objectList) {
             if (f instanceof FinishLine) {
-                if (a.getPos().compare(((FinishLine) f).getPos())) {
+                FinishLine line = (FinishLine) f;
+                System.out.println("pre confirm");
+                if (a.getPos().compare(line.getPos())) {
+                    System.out.println("confirm 1");
                     return 1;
                 }
             }
@@ -138,35 +122,7 @@ public class Game implements KeyboardHandler {
     @Override
     public void keyPressed(KeyboardEvent keyboardEvent) {
 
-
-        for (GameObject avatar1 : objectList) {
-            if (avatar1 instanceof Avatar) {
-
-                Avatar avatar = (Avatar) avatar1;
-
-                System.out.println("Posição do avatar" + ((Avatar) avatar).getPos());
-                System.out.println("List size " + objectList.size());
-
-
-                switch (keyboardEvent.getKey()) {
-                    case KeyboardEvent.KEY_UP:
-                        avatar.move(GridDirection.UP);
-                        break;
-                    case KeyboardEvent.KEY_DOWN:
-                        avatar.move(GridDirection.DOWN);
-                        break;
-                    case KeyboardEvent.KEY_LEFT:
-                        avatar.move(GridDirection.LEFT);
-                        break;
-                    case KeyboardEvent.KEY_RIGHT:
-                        avatar.move(GridDirection.RIGHT);
-                        break;
-
-                }
-            }
-        }
     }
-
 
     @Override
     public void keyReleased(KeyboardEvent keyboardEvent) {
