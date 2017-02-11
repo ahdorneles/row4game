@@ -26,7 +26,7 @@ public class Game implements KeyboardHandler {
     private int delay;
     private SimpleGfxGrid grid;
     private Avatar avatar;
-    private CollisionDetector collider;
+/*    private CollisionDetector collider;*/
     private boolean runningGame = true;
     private Level level;
     private Keyboard k;
@@ -44,8 +44,7 @@ public class Game implements KeyboardHandler {
         Rectangle rectangle = new Rectangle(grid.getPADDING(), grid.getPADDING(), grid.getCELL_SIZE() * grid.getCols(), grid.getCELL_SIZE() * grid.getRows());
         rectangle.setColor(Color.BLUE);
         rectangle.draw();
-
-        CollisionDetector collisionDetector = new CollisionDetector();
+/*        CollisionDetector collisionDetector = new CollisionDetector();*/
         //GameObject[] gameObjects = new GameObject[];
 
         grid.init(Level.LEVEL_1.getLevel());
@@ -109,7 +108,7 @@ public class Game implements KeyboardHandler {
 
                 System.out.println("Posição do avatar" + ((Avatar) avatar).getPos());
                 System.out.println("List size " + objectList.size());
-                System.out.println("List " + objectList.get(11));
+
 
                 switch (keyboardEvent.getKey()) {
                     case KeyboardEvent.KEY_UP:

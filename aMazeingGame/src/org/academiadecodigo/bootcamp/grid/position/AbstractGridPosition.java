@@ -32,4 +32,7 @@ public abstract class AbstractGridPosition {
         this.row = row;
     }
 
+    public Grid getGrid() {
+        return grid;
+    }
 }

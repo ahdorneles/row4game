@@ -13,6 +13,11 @@ public class SimpleGfxGridPosition extends AbstractGridPosition {
     }
 
     @Override
+    public Grid getGrid() {
+        return super.getGrid();
+    }
+
+    @Override
     public String toString() {
        return  "Coluna " + getCol() + " Linha "+ getRow();
     }
