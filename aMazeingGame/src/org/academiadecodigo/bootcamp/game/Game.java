@@ -60,11 +60,7 @@ public class Game {
 
             if (levelComplete()) {
                 for (GameObject o : grid.getObjectList()) {
-                    if (o instanceof Wall) {
-                        ((Wall) o).getPicture().delete();
-                    }
-                    if (o instanceof Avatar || o instanceof FinishLine)
-                        o.getRectangle().delete();
+                    o.getPicture().delete();
                 }
                 //objectList.clear();
                 //objectList = grid.init(nextLevel(currentLevel));

@@ -89,9 +89,10 @@ public class KeyboardInput implements KeyboardHandler {
                     GameObject menuPic = it.next();
                     if (menuPic instanceof Menu) {
                         Menu menu = (Menu) menuPic;
-                        ((Menu) menu).getPicture().delete();
+                        menu.getPicture().delete();
                     }
                     it.remove();
+                    Menu.backckground.draw();
                 }
                 currentLevel.getLevel();
                 grid.init(game.nextLevel(Level.MENU));
@@ -100,33 +101,16 @@ public class KeyboardInput implements KeyboardHandler {
             }
         }
 
-        if(keyboardEvent.getKey() == KeyboardEvent.KEY_R) {
+        if (keyboardEvent.getKey() == KeyboardEvent.KEY_R) {
 
-            System.out.println("---------------------------> RESET");
-            ArrayList<GameObject> backupList = new ArrayList<>();
-            Iterator<GameObject> it = grid.getObjectList().iterator();
-
-            while (it.hasNext()) {
-                GameObject a = it.next();
-                System.out.println("b4 delete ---------------------");
-                if(a instanceof Wall) {
-                    ((Wall) a).getPicture().delete(); }
-                    if( a instanceof FinishLine || a instanceof Avatar) {
-                    a.getRectangle().delete();
-                }
-                it.remove();
-
-                System.out.println(grid.getObjectList().size());
+            for (GameObject o : grid.getObjectList()) {
+                o.getPicture().delete();
             }
 
             grid.getObjectList().clear();
-            System.out.println("first list " + grid.getObjectList());
-            System.out.println(backupList);
             grid.init(Game.currentLevel.getLevel());
-
-
-
         }
+
 
         for (GameObject avatar1 : grid.getObjectList()) {
             if (avatar1 instanceof Avatar) {

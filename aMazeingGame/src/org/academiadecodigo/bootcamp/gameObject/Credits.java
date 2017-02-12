@@ -15,7 +15,7 @@ public class Credits {
        /* rectangle = new Rectangle(800, 600 ,25,25);
         rectangle.setColor(Color.GREEN);
         rectangle.fill();*/
-        picture = new Picture(10, 10, "/Users/codecadet/Desktop/row4Game/row4game/aMazeingGame/Resources/Credits/credits.jpg");
+        picture = new Picture(10, 10, "Resources/Credits/Credits.png");
         picture.draw();
     }
     public SimpleGfxGridPosition getPos() {

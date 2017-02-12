@@ -11,9 +11,11 @@ public class Menu extends GameObject {
     private SimpleGfxGridPosition position;
     private Rectangle rectangle;
     private Picture picture;
+    public static Picture backckground;
 
     public Menu(SimpleGfxGridPosition simpleGfxGridPosition) {
-        picture = new Picture(10, 10, "Resources/Menu/FirstImage_960px608.jpg");
+        picture = new Picture(SimpleGfxGrid.PADDING, SimpleGfxGrid.PADDING, "Resources/Menu/FirstImage_960px608.jpg");
+        backckground = new Picture(SimpleGfxGrid.PADDING, SimpleGfxGrid.PADDING, "Resources/Floor/Floor.jpg");
         picture.draw();
     }
 

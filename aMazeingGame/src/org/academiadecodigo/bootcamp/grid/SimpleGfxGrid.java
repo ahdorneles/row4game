@@ -13,20 +13,16 @@ import java.util.ArrayList;
  */
 public class SimpleGfxGrid implements Grid {
 
-    private final int PADDING = 10;
+    public static int PADDING = 10;
     private int cols;
     private int rows;
-    private final int CELL_SIZE = 50;
+    public static int CELL_SIZE = 50;
     private ArrayList<GameObject> objectList;
-    private Picture picture;
 
     public SimpleGfxGrid(int cols, int rows) {
         this.cols = cols;
         this.rows = rows;
-        picture = new Picture(PADDING,PADDING, "Resources/Floor/Floor.jpg");
-        picture.draw();
     }
-
 
 
     @Override
