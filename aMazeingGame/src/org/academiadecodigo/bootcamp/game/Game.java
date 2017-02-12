@@ -4,6 +4,7 @@ import org.academiadecodigo.bootcamp.Player;
 import org.academiadecodigo.bootcamp.gameObject.Avatar;
 import org.academiadecodigo.bootcamp.gameObject.FinishLine;
 import org.academiadecodigo.bootcamp.gameObject.GameObject;
+import org.academiadecodigo.bootcamp.gameObject.Wall;
 import org.academiadecodigo.bootcamp.grid.Grid;
 import org.academiadecodigo.bootcamp.grid.GridDirection;
 import org.academiadecodigo.bootcamp.grid.Level;
@@ -38,7 +39,7 @@ public class Game {
 
     public void init() {
 
-        grid = new SimpleGfxGrid(20, 20);
+        grid = new SimpleGfxGrid(40, 40);
         Rectangle rectangle = new Rectangle(grid.getPADDING(), grid.getPADDING(), grid.getCELL_SIZE() * grid.getCols(), grid.getCELL_SIZE() * grid.getRows());
         rectangle.setColor(Color.BLUE);
         rectangle.draw();
@@ -62,6 +63,10 @@ public class Game {
 
             if (levelComplete()) {
                 for (GameObject o: grid.getObjectList()) {
+                    if(o instanceof Wall) {
+                        ((Wall) o).getPicture().delete();
+                    }
+                    if(o instanceof Avatar || o instanceof FinishLine)
                     o.getRectangle().delete();
                 }
                 //objectList.clear();

@@ -36,6 +36,7 @@ public class CollisionDetector {
             if (wall instanceof Wall) {
                 Wall w = (Wall) wall;
                 if (w.getPos().getRow() == row && w.getPos().getCol() == col) {
+                    System.out.println("colidindo");
                     return true;
                 }
             }

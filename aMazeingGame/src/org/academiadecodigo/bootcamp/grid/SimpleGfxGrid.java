@@ -15,7 +15,7 @@ public class SimpleGfxGrid implements Grid {
     private final int PADDING = 10;
     private int cols;
     private int rows;
-    private final int CELL_SIZE = 25;
+    private final int CELL_SIZE = 50;
     private ArrayList<GameObject> objectList;
 
     public SimpleGfxGrid(int cols, int rows) {

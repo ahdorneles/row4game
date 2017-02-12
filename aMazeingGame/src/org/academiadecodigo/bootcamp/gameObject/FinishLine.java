@@ -16,9 +16,10 @@ public class FinishLine extends GameObject{
 
     public FinishLine (SimpleGfxGridPosition simpleGfxGridPosition) {
         position = simpleGfxGridPosition;
-        rectangle = new Rectangle((getPos().getCol() * 25) + 10, (getPos().getRow() * 25) + 10, 25, 25);
+        rectangle = new Rectangle((getPos().getCol() * 32) + 10, (getPos().getRow() * 32) + 10, 32, 32);
         rectangle.setColor(Color.GRAY);
         rectangle.fill();
+
     }
 
     public SimpleGfxGridPosition getPos() {

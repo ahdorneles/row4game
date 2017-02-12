@@ -1,7 +1,9 @@
 package org.academiadecodigo.bootcamp.game;
 
 import org.academiadecodigo.bootcamp.gameObject.Avatar;
+import org.academiadecodigo.bootcamp.gameObject.FinishLine;
 import org.academiadecodigo.bootcamp.gameObject.GameObject;
+import org.academiadecodigo.bootcamp.gameObject.Wall;
 import org.academiadecodigo.bootcamp.grid.GridDirection;
 import org.academiadecodigo.bootcamp.grid.Level;
 import org.academiadecodigo.bootcamp.grid.SimpleGfxGrid;
@@ -75,7 +77,11 @@ public class KeyboardInput implements KeyboardHandler {
             while (it.hasNext()) {
                 GameObject a = it.next();
                 System.out.println("b4 delete ---------------------");
-                a.getRectangle().delete();
+                if(a instanceof Wall) {
+                    ((Wall) a).getPicture().delete(); }
+                    if( a instanceof FinishLine || a instanceof Avatar) {
+                    a.getRectangle().delete();
+                }
                 it.remove();
 
                 System.out.println(grid.getObjectList().size());
