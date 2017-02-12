@@ -4,6 +4,7 @@ import org.academiadecodigo.bootcamp.Player;
 import org.academiadecodigo.bootcamp.gameObject.Avatar;
 import org.academiadecodigo.bootcamp.gameObject.FinishLine;
 import org.academiadecodigo.bootcamp.gameObject.GameObject;
+import org.academiadecodigo.bootcamp.gameObject.Wall;
 import org.academiadecodigo.bootcamp.grid.Grid;
 import org.academiadecodigo.bootcamp.grid.GridDirection;
 import org.academiadecodigo.bootcamp.grid.Level;
@@ -22,12 +23,13 @@ import java.util.*;
 /**
  * Created by codecadet on 06/02/2017.
  */
-public class Game implements KeyboardHandler {
+public class Game {
 
     private int delay;
     private SimpleGfxGrid grid;
     private boolean runningGame = true;
     private ArrayList<GameObject> objectList;
+    public static Level currentLevel = Level.LEVEL_1;
 
 
     public Game(int delay) {/// not sure if needs it
@@ -37,7 +39,7 @@ public class Game implements KeyboardHandler {
 
     public void init() {
 
-        grid = new SimpleGfxGrid(20, 20);
+        grid = new SimpleGfxGrid(40, 40);
         Rectangle rectangle = new Rectangle(grid.getPADDING(), grid.getPADDING(), grid.getCELL_SIZE() * grid.getCols(), grid.getCELL_SIZE() * grid.getRows());
         rectangle.setColor(Color.BLUE);
         rectangle.draw();
@@ -45,6 +47,7 @@ public class Game implements KeyboardHandler {
         grid.init(Level.LEVEL_1.getLevel());
         KeyboardInput keyboardInput = new KeyboardInput(grid);
         objectList = grid.getObjectList();
+
 
 
     }
@@ -58,15 +61,19 @@ public class Game implements KeyboardHandler {
                 e.printStackTrace();
             }
 
-            Level currentLevel = Level.LEVEL_1;
-
             if (levelComplete()) {
-                for (GameObject o:
-                     objectList) {
+                for (GameObject o: grid.getObjectList()) {
+                    if(o instanceof Wall) {
+                        ((Wall) o).getPicture().delete();
+                    }
+                    if(o instanceof Avatar || o instanceof FinishLine)
                     o.getRectangle().delete();
                 }
-                objectList.clear();
+                //objectList.clear();
+                //objectList = grid.init(nextLevel(currentLevel));
+
                 grid.init(nextLevel(currentLevel));
+
                 currentLevel = Level.values()[currentLevel.ordinal() + 1];
 
             }
@@ -78,13 +85,16 @@ public class Game implements KeyboardHandler {
     }
 
     private boolean levelComplete() {
-        System.out.println("lvlcomp");
+        System.out.println("Checking level complete");
 
         int totalChecks = 0;
-
         int positiveChecks = 0;
 
-        for (GameObject a : objectList) {
+        System.out.println(grid.getObjectList().size());
+
+        for (GameObject a : grid.getObjectList()) {
+            //System.out.println(a);
+
             if (a instanceof Avatar) {
                 System.out.println("positive checks");
                 Avatar avatar = (Avatar) a;
@@ -93,17 +103,16 @@ public class Game implements KeyboardHandler {
                 positiveChecks += confirmation(avatar);
             }
 
-            if (totalChecks != 0 && totalChecks == positiveChecks) {
-                return true;
-            }
-
+        }
+        if (totalChecks != 0 && totalChecks == positiveChecks) {
+            return true;
         }
         return false;
     }
 
     private int confirmation(Avatar a) {
         System.out.println("first conf");
-        for (GameObject f : objectList) {
+        for (GameObject f : grid.getObjectList()) {
             if (f instanceof FinishLine) {
                 FinishLine line = (FinishLine) f;
                 System.out.println("pre confirm");
@@ -116,17 +125,6 @@ public class Game implements KeyboardHandler {
         }
         return 0;
     }
-
-    @Override
-    public void keyPressed(KeyboardEvent keyboardEvent) {
-
-    }
-
-    @Override
-    public void keyReleased(KeyboardEvent keyboardEvent) {
-
-    }
-
 
 
 }

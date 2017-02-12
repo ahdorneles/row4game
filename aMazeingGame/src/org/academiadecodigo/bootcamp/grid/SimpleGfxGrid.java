@@ -15,7 +15,7 @@ public class SimpleGfxGrid implements Grid {
     private final int PADDING = 10;
     private int cols;
     private int rows;
-    private final int CELL_SIZE = 25;
+    private final int CELL_SIZE = 50;
     private ArrayList<GameObject> objectList;
 
     public SimpleGfxGrid(int cols, int rows) {
@@ -26,7 +26,7 @@ public class SimpleGfxGrid implements Grid {
 
 
     @Override
-    public void init(int[][] array) {
+    public ArrayList<GameObject> init(int[][] array) {
 
         objectList = new ArrayList<>();
 
@@ -56,7 +56,7 @@ public class SimpleGfxGrid implements Grid {
             }
         }
 
-        System.out.println(objectList.size());
+        return objectList;
 
     }
 
@@ -90,6 +90,10 @@ public class SimpleGfxGrid implements Grid {
 
     public ArrayList<GameObject> getObjectList() {
         return objectList;
+    }
+
+    public void setObjectList(ArrayList<GameObject> objectList) {
+        this.objectList = objectList;
     }
 
     @Override

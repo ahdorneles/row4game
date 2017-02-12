@@ -12,26 +12,29 @@ import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
+import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 /**
  * Created by codecadet on 06/02/2017.
  */
 public class Avatar extends GameObject {
-    private static final double SPEED = 25;
+    private static final double SPEED = 32;
     private SimpleGfxGridPosition position;
     private GridDirection direction;
     private SimpleGfxGrid grid;
     private CollisionDetector collisionDetector;
     private Rectangle rectangle;
+    private Picture picture;
 
 
     public Avatar(SimpleGfxGridPosition position) {
         this.position = position;
         grid = (SimpleGfxGrid) position.getGrid();
         collisionDetector = new CollisionDetector(this, position, grid);
-        rectangle = new Rectangle((getPos().getCol() * 25) + 10, (getPos().getRow() * 25) + 10, 25, 25);
+        rectangle = new Rectangle((getPos().getCol() * 32) + 10, (getPos().getRow() * 32) + 10, 32, 32);
         rectangle.setColor(Color.BLUE);
-        rectangle.fill();
+        rectangle.draw();
+
     }
 
     public SimpleGfxGridPosition getPos() {
@@ -65,6 +68,7 @@ public class Avatar extends GameObject {
                     int finalRowUp = getPos().getRow();
                     System.out.println("Direção " + direction);
                     rectangle.translate(0, (finalRowUp - initialRow) * SPEED);
+                    System.out.println("rectangle draw");
                 }
                 System.out.println("outside if condition");
                 break;
