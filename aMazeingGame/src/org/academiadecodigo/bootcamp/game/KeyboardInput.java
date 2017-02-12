@@ -74,6 +74,7 @@ public class KeyboardInput implements KeyboardHandler {
         if (keyboardEvent.getKey() == keyboardEvent.KEY_Q) {
             credits = new Credits(simpleGfxGridPosition);
             grid.getObjectList().clear();
+            menuFlag = true;
 
             /*Iterator<GameObject> it = grid.getObjectList().iterator();
             while (it.hasNext()) {
