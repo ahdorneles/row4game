@@ -27,7 +27,6 @@ public class Game implements KeyboardHandler {
     private int delay;
     private SimpleGfxGrid grid;
     private boolean runningGame = true;
-    private Keyboard k;
     private ArrayList<GameObject> objectList;
 
 
@@ -42,10 +41,9 @@ public class Game implements KeyboardHandler {
         Rectangle rectangle = new Rectangle(grid.getPADDING(), grid.getPADDING(), grid.getCELL_SIZE() * grid.getCols(), grid.getCELL_SIZE() * grid.getRows());
         rectangle.setColor(Color.BLUE);
         rectangle.draw();
-/*        CollisionDetector collisionDetector = new CollisionDetector();*/
-        //GameObject[] gameObjects = new GameObject[];
 
         grid.init(Level.LEVEL_1.getLevel());
+        KeyboardInput keyboardInput = new KeyboardInput(grid);
         objectList = grid.getObjectList();
 
 
@@ -132,11 +130,7 @@ public class Game implements KeyboardHandler {
 
     }
 
-  /*  public void moveAvatar() {
 
-        if (!collider.collided()) {
-
-        }*/
 
 }
 
