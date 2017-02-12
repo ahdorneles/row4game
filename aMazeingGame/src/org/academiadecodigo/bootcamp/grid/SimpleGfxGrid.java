@@ -52,6 +52,10 @@ public class SimpleGfxGrid implements Grid {
 
                     case 3:
                         objectList.add(create(j, i, ObjectType.FINISH_LINE));
+                        break;
+                    case 10:
+                        objectList.add(create(j, i, ObjectType.MENU));
+                        break;
                 }
             }
         }
@@ -82,6 +86,11 @@ public class SimpleGfxGrid implements Grid {
                 SimpleGfxGridPosition position2 = new SimpleGfxGridPosition(i, j, this);
                 FinishLine line = new FinishLine(position2);
                 returnObject = line;
+                break;
+            case MENU:
+                SimpleGfxGridPosition position3 = new SimpleGfxGridPosition(i, j, this);
+                Menu menu = new Menu(position3);
+                returnObject = menu;
                 break;
 
         }

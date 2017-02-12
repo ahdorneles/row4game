@@ -4,6 +4,8 @@ package org.academiadecodigo.bootcamp.grid;
  * Created by codecadet on 06/02/2017.
  */
 public enum Level {
+    MENU(new int[][] {{10},
+            {0}}),
 
 
     LEVEL_1(new int[][]{

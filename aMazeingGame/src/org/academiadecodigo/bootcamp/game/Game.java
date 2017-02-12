@@ -38,18 +38,13 @@ public class Game {
     }
 
     public void init() {
-
-        grid = new SimpleGfxGrid(40, 40);
+        grid = new SimpleGfxGrid(20, 20);
         Rectangle rectangle = new Rectangle(grid.getPADDING(), grid.getPADDING(), grid.getCELL_SIZE() * grid.getCols(), grid.getCELL_SIZE() * grid.getRows());
         rectangle.setColor(Color.BLUE);
         rectangle.draw();
-
-        grid.init(Level.LEVEL_1.getLevel());
+        grid.init(Level.MENU.getLevel());
         KeyboardInput keyboardInput = new KeyboardInput(grid);
         objectList = grid.getObjectList();
-
-
-
     }
 
     public void start() {
@@ -80,7 +75,7 @@ public class Game {
         }
     }
 
-    private int[][] nextLevel(Level currentLevel) {
+    public int[][] nextLevel(Level currentLevel) {
         return Level.values()[currentLevel.ordinal() + 1].getLevel();
     }
 

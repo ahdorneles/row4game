@@ -7,5 +7,6 @@ public enum ObjectType {
 
     WALL,
     AVATAR,
-    FINISH_LINE
+    FINISH_LINE,
+    MENU
 }
