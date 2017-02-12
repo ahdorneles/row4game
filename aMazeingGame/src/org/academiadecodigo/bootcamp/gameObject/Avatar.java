@@ -65,6 +65,7 @@ public class Avatar extends GameObject {
                     int finalRowUp = getPos().getRow();
                     System.out.println("Direção " + direction);
                     rectangle.translate(0, (finalRowUp - initialRow) * SPEED);
+                    System.out.println("rectangle draw");
                 }
                 System.out.println("outside if condition");
                 break;

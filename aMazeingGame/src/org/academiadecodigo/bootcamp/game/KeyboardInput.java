@@ -3,11 +3,17 @@ package org.academiadecodigo.bootcamp.game;
 import org.academiadecodigo.bootcamp.gameObject.Avatar;
 import org.academiadecodigo.bootcamp.gameObject.GameObject;
 import org.academiadecodigo.bootcamp.grid.GridDirection;
+import org.academiadecodigo.bootcamp.grid.Level;
 import org.academiadecodigo.bootcamp.grid.SimpleGfxGrid;
+import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
 
 /**
  * Created by codecadet on 11/02/2017.
@@ -16,6 +22,8 @@ public class KeyboardInput implements KeyboardHandler {
 
     private Keyboard k;
     private SimpleGfxGrid grid;
+    private Level currentLevel = Game.currentLevel;
+
 
     public KeyboardInput(SimpleGfxGrid grid) {
         this.grid = grid;
@@ -58,9 +66,34 @@ public class KeyboardInput implements KeyboardHandler {
     @Override
     public void keyPressed(KeyboardEvent keyboardEvent) {
 
+        if(keyboardEvent.getKey() == KeyboardEvent.KEY_R) {
+
+            System.out.println("---------------------------> RESET");
+            ArrayList<GameObject> backupList = new ArrayList<>();
+            Iterator<GameObject> it = grid.getObjectList().iterator();
+
+            while (it.hasNext()) {
+                GameObject a = it.next();
+                System.out.println("b4 delete ---------------------");
+                a.getRectangle().delete();
+                it.remove();
+
+                System.out.println(grid.getObjectList().size());
+            }
+
+            grid.getObjectList().clear();
+            System.out.println("first list " + grid.getObjectList());
+            System.out.println(backupList);
+            grid.init(Game.currentLevel.getLevel());
+
+
+
+        }
 
         for (GameObject avatar1 : grid.getObjectList()) {
             if (avatar1 instanceof Avatar) {
+
+                System.out.println("2nd list verification " + grid.getObjectList());
 
                 Avatar avatar = (Avatar) avatar1;
 

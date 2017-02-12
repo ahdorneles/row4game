@@ -92,6 +92,10 @@ public class SimpleGfxGrid implements Grid {
         return objectList;
     }
 
+    public void setObjectList(ArrayList<GameObject> objectList) {
+        this.objectList = objectList;
+    }
+
     @Override
     public int getCols() {
         return cols;

@@ -28,7 +28,7 @@ public class Game {
     private SimpleGfxGrid grid;
     private boolean runningGame = true;
     private ArrayList<GameObject> objectList;
-    private Level currentLevel = Level.LEVEL_1;
+    public static Level currentLevel = Level.LEVEL_1;
 
 
     public Game(int delay) {/// not sure if needs it
@@ -48,6 +48,7 @@ public class Game {
         objectList = grid.getObjectList();
 
 
+
     }
 
     public void start() {
@@ -60,11 +61,13 @@ public class Game {
             }
 
             if (levelComplete()) {
-                for (GameObject o: objectList) {
+                for (GameObject o: grid.getObjectList()) {
                     o.getRectangle().delete();
                 }
-                objectList.clear();
-                objectList = grid.init(nextLevel(currentLevel));
+                //objectList.clear();
+                //objectList = grid.init(nextLevel(currentLevel));
+
+                grid.init(nextLevel(currentLevel));
 
                 currentLevel = Level.values()[currentLevel.ordinal() + 1];
 
@@ -77,12 +80,15 @@ public class Game {
     }
 
     private boolean levelComplete() {
+        System.out.println("Checking level complete");
 
         int totalChecks = 0;
         int positiveChecks = 0;
 
-        for (GameObject a : objectList) {
-            System.out.println(a);
+        System.out.println(grid.getObjectList().size());
+
+        for (GameObject a : grid.getObjectList()) {
+            //System.out.println(a);
 
             if (a instanceof Avatar) {
                 System.out.println("positive checks");
@@ -102,7 +108,7 @@ public class Game {
 
     private int confirmation(Avatar a) {
         System.out.println("first conf");
-        for (GameObject f : objectList) {
+        for (GameObject f : grid.getObjectList()) {
             if (f instanceof FinishLine) {
                 FinishLine line = (FinishLine) f;
                 System.out.println("pre confirm");
