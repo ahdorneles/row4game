@@ -25,6 +25,8 @@ public class Avatar extends GameObject {
     private CollisionDetector collisionDetector;
     private Rectangle rectangle;
     private Picture picture;
+    private int moveCounter;
+    private GridDirection lastDirection;
 
 
     public Avatar(SimpleGfxGridPosition position) {
@@ -53,6 +55,15 @@ public class Avatar extends GameObject {
         return direction;
     }
 
+    private void moveCounterSetup () {
+        if (direction == lastDirection && moveCounter < 4) {
+            moveCounter++;
+        } else {
+            moveCounter = 0;
+        }
+    }
+
+
     public void move(GridDirection direction) {
         int initialCol = this.getPos().getCol();
         int initialRow = this.getPos().getRow();
@@ -60,43 +71,47 @@ public class Avatar extends GameObject {
         System.out.println("Linha " + initialRow);
 
 
+
         switch (direction) {
+
             case UP:
+                   moveCounterSetup();
                 if (!collisionDetector.getCollided(getPos().getRow() - 1, getPos().getCol())) {
-                    System.out.println("inside if condition");
                     this.position.setRow(getPos().getRow() - 1);
                     int finalRowUp = getPos().getRow();
-                    System.out.println("Direção " + direction);
-                    rectangle.translate(0, (finalRowUp - initialRow) * SPEED);
-                    System.out.println("rectangle draw");
+                    picture = new Picture(getPos().getCol(), getPos().getRow(), "Resources/Avatar/UP" + moveCounter + ".png");
+                    picture.draw();
                 }
-                System.out.println("outside if condition");
+                lastDirection = direction;
                 break;
 
             case DOWN:
+                moveCounterSetup();
                 if (!collisionDetector.getCollided(getPos().getRow() + 1, getPos().getCol())) {
                     this.position.setRow(getPos().getRow() + 1);
                     int finalRowDown = getPos().getRow();
-                    System.out.println("Direção " + direction);
                     rectangle.translate(0, (finalRowDown - initialRow) * SPEED);
                 }
+                lastDirection = direction;
                 break;
 
             case RIGHT:
+                moveCounterSetup();
                 if (!collisionDetector.getCollided(getPos().getRow(), getPos().getCol() + 1)) {
                     this.position.setCol(getPos().getCol() + 1);
                     int finalColRight = getPos().getCol();
-                    System.out.println("Direção " + direction);
                     rectangle.translate((finalColRight - initialCol) * SPEED, 0);
                 }
+                lastDirection = direction;
                 break;
             case LEFT:
+                moveCounterSetup();
                 if (!collisionDetector.getCollided(getPos().getRow(), getPos().getCol() - 1)) {
                     this.position.setCol(getPos().getCol() - 1);
                     int finalColLeft = getPos().getCol();
-                    System.out.println("Direção " + direction);
                     rectangle.translate((finalColLeft - initialCol) * SPEED, 0);
                 }
+                lastDirection = direction;
                 break;
 
         }

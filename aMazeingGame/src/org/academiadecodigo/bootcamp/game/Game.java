@@ -16,6 +16,7 @@ import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
+import org.academiadecodigo.simplegraphics.pictures.Picture;
 import sun.jvm.hotspot.runtime.Thread;
 
 import java.util.*;
@@ -30,6 +31,7 @@ public class Game {
     private boolean runningGame = true;
     private ArrayList<GameObject> objectList;
     public static Level currentLevel = Level.LEVEL_1;
+    public Picture picture;
 
 
     public Game(int delay) {/// not sure if needs it
@@ -39,10 +41,12 @@ public class Game {
 
     public void init() {
 
-        grid = new SimpleGfxGrid(40, 40);
-        Rectangle rectangle = new Rectangle(grid.getPADDING(), grid.getPADDING(), grid.getCELL_SIZE() * grid.getCols(), grid.getCELL_SIZE() * grid.getRows());
-        rectangle.setColor(Color.BLUE);
-        rectangle.draw();
+        grid = new SimpleGfxGrid(30, 19);
+        //Rectangle rectangle = new Rectangle(grid.getPADDING(), grid.getPADDING(), grid.getCELL_SIZE() * grid.getCols(), grid.getCELL_SIZE() * grid.getRows());
+        //rectangle.setColor(Color.BLUE);
+        //rectangle.draw();
+        picture = new Picture(grid.getPADDING(), grid.getPADDING(),"Resources/Floor/Floor.jpg");
+        picture.draw();
 
         grid.init(Level.LEVEL_1.getLevel());
         KeyboardInput keyboardInput = new KeyboardInput(grid);
