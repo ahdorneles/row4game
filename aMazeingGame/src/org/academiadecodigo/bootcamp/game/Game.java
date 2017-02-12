@@ -33,7 +33,6 @@ public class Game {
     public static Level currentLevel = Level.LEVEL_1;
     public Picture picture;
 
-
     public Game(int delay) {/// not sure if needs it
         this.delay = delay;
         this.objectList = null;
@@ -41,17 +40,15 @@ public class Game {
 
     public void init() {
 
-        grid = new SimpleGfxGrid(30, 19);
-        //Rectangle rectangle = new Rectangle(grid.getPADDING(), grid.getPADDING(), grid.getCELL_SIZE() * grid.getCols(), grid.getCELL_SIZE() * grid.getRows());
-        //rectangle.setColor(Color.BLUE);
-        //rectangle.draw();
-        picture = new Picture(grid.getPADDING(), grid.getPADDING(),"Resources/Floor/Floor.jpg");
+        grid = new SimpleGfxGrid(40, 40);
+        // Rectangle rectangle = new Rectangle(grid.getPADDING(), grid.getPADDING(), grid.getCELL_SIZE() * grid.getCols(), grid.getCELL_SIZE() * grid.getRows());
+        // rectangle.setColor(Color.BLUE);
+        // rectangle.draw();
+        picture = new Picture(grid.getPADDING(), grid.getPADDING(), "Resources/Floor/Floor.jpg");
         picture.draw();
-
         grid.init(Level.LEVEL_1.getLevel());
         KeyboardInput keyboardInput = new KeyboardInput(grid);
         objectList = grid.getObjectList();
-
 
 
     }
@@ -66,12 +63,12 @@ public class Game {
             }
 
             if (levelComplete()) {
-                for (GameObject o: grid.getObjectList()) {
-                    if(o instanceof Wall) {
+                for (GameObject o : grid.getObjectList()) {
+                    if (o instanceof Wall) {
                         ((Wall) o).getPicture().delete();
                     }
-                    if(o instanceof Avatar || o instanceof FinishLine)
-                    o.getRectangle().delete();
+                    if (o instanceof Avatar || o instanceof FinishLine)
+                        o.getRectangle().delete();
                 }
                 //objectList.clear();
                 //objectList = grid.init(nextLevel(currentLevel));
