@@ -31,7 +31,8 @@ public class Game {
     private boolean runningGame = true;
     private ArrayList<GameObject> objectList;
     public static Level currentLevel = Level.LEVEL_1;
-    public Picture picture;
+    private Picture picture;
+
 
     public Game(int delay) {/// not sure if needs it
         this.delay = delay;
@@ -39,18 +40,13 @@ public class Game {
     }
 
     public void init() {
-
-        grid = new SimpleGfxGrid(40, 40);
-        // Rectangle rectangle = new Rectangle(grid.getPADDING(), grid.getPADDING(), grid.getCELL_SIZE() * grid.getCols(), grid.getCELL_SIZE() * grid.getRows());
-        // rectangle.setColor(Color.BLUE);
-        // rectangle.draw();
-        picture = new Picture(grid.getPADDING(), grid.getPADDING(), "Resources/Floor/Floor.jpg");
-        picture.draw();
-        grid.init(Level.LEVEL_1.getLevel());
+        grid = new SimpleGfxGrid(20, 20);
+        grid.init(Level.MENU.getLevel());
+        //Rectangle rectangle = new Rectangle(grid.getPADDING(), grid.getPADDING(), grid.getCELL_SIZE() * grid.getCols(), grid.getCELL_SIZE() * grid.getRows());
+        //rectangle.setColor(Color.BLUE);
+        //rectangle.draw();
         KeyboardInput keyboardInput = new KeyboardInput(grid);
         objectList = grid.getObjectList();
-
-
     }
 
     public void start() {
@@ -81,7 +77,7 @@ public class Game {
         }
     }
 
-    private int[][] nextLevel(Level currentLevel) {
+    public int[][] nextLevel(Level currentLevel) {
         return Level.values()[currentLevel.ordinal() + 1].getLevel();
     }
 
@@ -122,11 +118,8 @@ public class Game {
                     return 1;
                 }
             }
-
         }
         return 0;
     }
-
-
 }
 

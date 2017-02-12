@@ -1,24 +1,21 @@
 package org.academiadecodigo.bootcamp.gameObject;
 
 import org.academiadecodigo.bootcamp.grid.position.SimpleGfxGridPosition;
-import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
-import java.security.Signature;
-
 /**
- * Created by codecadet on 11/02/17.
+ * Created by codecadet on 12/02/2017.
  */
-public class FinishLine extends GameObject{
+public class StartLevel {
 
     private SimpleGfxGridPosition position;
     private Rectangle rectangle;
     private Picture picture;
 
-    public FinishLine (SimpleGfxGridPosition simpleGfxGridPosition) {
+    public StartLevel(SimpleGfxGridPosition simpleGfxGridPosition) {
         position = simpleGfxGridPosition;
-        picture = new Picture((getPos().getCol() * 32) + 10, (getPos().getRow() * 32) + 10, "Resources/Wall/FinishLine.png");
+        picture = new Picture((getPos().getCol() * 32) + 10, (getPos().getRow() * 32) + 10, "Resources/Wall/StartLevel.png");
         picture.draw();
     }
 
@@ -39,3 +36,4 @@ public class FinishLine extends GameObject{
         return picture;
     }
 }
+

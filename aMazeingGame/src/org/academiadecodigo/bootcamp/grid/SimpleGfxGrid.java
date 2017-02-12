@@ -4,6 +4,7 @@ import org.academiadecodigo.bootcamp.gameObject.*;
 import org.academiadecodigo.bootcamp.grid.position.SimpleGfxGridPosition;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
+import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 import java.util.ArrayList;
 
@@ -17,10 +18,13 @@ public class SimpleGfxGrid implements Grid {
     private int rows;
     private final int CELL_SIZE = 50;
     private ArrayList<GameObject> objectList;
+    private Picture picture;
 
     public SimpleGfxGrid(int cols, int rows) {
         this.cols = cols;
         this.rows = rows;
+        picture = new Picture(PADDING,PADDING, "Resources/Floor/Floor.jpg");
+        picture.draw();
     }
 
 
@@ -52,6 +56,10 @@ public class SimpleGfxGrid implements Grid {
 
                     case 3:
                         objectList.add(create(j, i, ObjectType.FINISH_LINE));
+                        break;
+                    case 10:
+                        objectList.add(create(j, i, ObjectType.MENU));
+                        break;
                 }
             }
         }
@@ -82,6 +90,11 @@ public class SimpleGfxGrid implements Grid {
                 SimpleGfxGridPosition position2 = new SimpleGfxGridPosition(i, j, this);
                 FinishLine line = new FinishLine(position2);
                 returnObject = line;
+                break;
+            case MENU:
+                SimpleGfxGridPosition position3 = new SimpleGfxGridPosition(i, j, this);
+                Menu menu = new Menu(position3);
+                returnObject = menu;
                 break;
 
         }

@@ -1,12 +1,10 @@
 package org.academiadecodigo.bootcamp.game;
 
-import org.academiadecodigo.bootcamp.gameObject.Avatar;
-import org.academiadecodigo.bootcamp.gameObject.FinishLine;
-import org.academiadecodigo.bootcamp.gameObject.GameObject;
-import org.academiadecodigo.bootcamp.gameObject.Wall;
+import org.academiadecodigo.bootcamp.gameObject.*;
 import org.academiadecodigo.bootcamp.grid.GridDirection;
 import org.academiadecodigo.bootcamp.grid.Level;
 import org.academiadecodigo.bootcamp.grid.SimpleGfxGrid;
+import org.academiadecodigo.bootcamp.grid.position.SimpleGfxGridPosition;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
@@ -25,6 +23,10 @@ public class KeyboardInput implements KeyboardHandler {
     private Keyboard k;
     private SimpleGfxGrid grid;
     private Level currentLevel = Game.currentLevel;
+    private Credits credits;
+    private SimpleGfxGridPosition simpleGfxGridPosition;
+    private Game game;
+    private boolean menuFlag = false;
 
 
     public KeyboardInput(SimpleGfxGrid grid) {
@@ -67,6 +69,36 @@ public class KeyboardInput implements KeyboardHandler {
 
     @Override
     public void keyPressed(KeyboardEvent keyboardEvent) {
+        this.simpleGfxGridPosition = new SimpleGfxGridPosition(800, 600, grid);
+        this.game = new Game(1000);
+        if (keyboardEvent.getKey() == keyboardEvent.KEY_Q) {
+            credits = new Credits(simpleGfxGridPosition);
+            grid.getObjectList().clear();
+            menuFlag = true;
+
+            /*Iterator<GameObject> it = grid.getObjectList().iterator();
+            while (it.hasNext()) {
+                it.next().getRectangle().delete();
+                it.remove();
+                it.next();*/
+        }
+        if (keyboardEvent.getKey() == keyboardEvent.KEY_SPACE) {
+            if (!menuFlag) {
+                Iterator<GameObject> it = grid.getObjectList().iterator();
+                while (it.hasNext()) {
+                    GameObject menuPic = it.next();
+                    if (menuPic instanceof Menu) {
+                        Menu menu = (Menu) menuPic;
+                        ((Menu) menu).getPicture().delete();
+                    }
+                    it.remove();
+                }
+                currentLevel.getLevel();
+                grid.init(game.nextLevel(Level.MENU));
+                currentLevel = Level.values()[Level.MENU.ordinal() + 1];
+                menuFlag = true;
+            }
+        }
 
         if(keyboardEvent.getKey() == KeyboardEvent.KEY_R) {
 

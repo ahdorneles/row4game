@@ -9,6 +9,8 @@ import org.academiadecodigo.bootcamp.grid.position.SimpleGfxGridPosition;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
+import java.io.DataInput;
+
 /**
  * Created by codecadet on 06/02/2017.
  */
@@ -21,7 +23,7 @@ public class Avatar extends GameObject {
     private Rectangle rectangle;
     private Picture picture;
     private int moveCounter;
-    private GridDirection lastDirection;
+    private GridDirection lastDirection = GridDirection.DOWN;
 
 
     public Avatar(SimpleGfxGridPosition position) {
@@ -30,6 +32,7 @@ public class Avatar extends GameObject {
         collisionDetector = new CollisionDetector(this, position, grid);
         picture = new Picture((getPos().getCol() * 32) + 10, (getPos().getRow() * 32) + 10, "Resources/Avatar/UP/Avatar0.png");
         picture.draw();
+
         //rectangle = new Rectangle((getPos().getCol() * 32) + 10, (getPos().getRow() * 32) + 10, 32, 32);
         //rectangle.setColor(Color.BLUE);
         //rectangle.draw();
@@ -54,10 +57,17 @@ public class Avatar extends GameObject {
 
     private void nextPictureSetup() {
         picture.delete();
-        if (direction == lastDirection && moveCounter < 4) {
-            moveCounter++;
-        } else {
+        System.out.println("delete--------------------------------------------------");
+        System.out.println("movecounter: " + moveCounter + "direction: " + direction);
+        System.out.println("last direction " + lastDirection.toString());
+
+        if (moveCounter >= 3 || lastDirection != direction) {
+            System.out.println(moveCounter + "--------------------------------------------");
             moveCounter = 0;
+            System.out.println("move counter 0-------------------------------------------");
+        } else {
+            moveCounter++;
+            System.out.println("move counter ++ -------------------------------------");
         }
     }
 
@@ -67,6 +77,7 @@ public class Avatar extends GameObject {
         int initialRow = this.getPos().getRow();
         System.out.println("Coluna " + initialCol);
         System.out.println("Linha " + initialRow);
+        this.direction = direction;
 
 
         switch (direction) {
@@ -81,10 +92,10 @@ public class Avatar extends GameObject {
                     picture.draw();
                 }
                 lastDirection = direction;
+
                 break;
 
             case DOWN:
-
                 if (!collisionDetector.getCollided(getPos().getRow() + 1, getPos().getCol())) {
                     nextPictureSetup();
                     this.position.setRow(getPos().getRow() + 1);
@@ -93,6 +104,7 @@ public class Avatar extends GameObject {
                     picture.draw();
                 }
                 lastDirection = direction;
+
                 break;
 
             case RIGHT:
@@ -106,6 +118,7 @@ public class Avatar extends GameObject {
                 }
                 lastDirection = direction;
                 break;
+
             case LEFT:
 
                 if (!collisionDetector.getCollided(getPos().getRow(), getPos().getCol() - 1)) {
@@ -115,6 +128,7 @@ public class Avatar extends GameObject {
                     picture = new Picture((getPos().getCol() * 32) + 10, (getPos().getRow() * 32) + 10, "Resources/Avatar/LEFT/Avatar" + moveCounter + ".png");
                     picture.draw();
                 }
+
                 lastDirection = direction;
                 break;
 
