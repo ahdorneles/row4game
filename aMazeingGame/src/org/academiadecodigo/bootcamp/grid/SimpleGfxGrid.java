@@ -26,7 +26,7 @@ public class SimpleGfxGrid implements Grid {
 
 
     @Override
-    public void init(int[][] array) {
+    public ArrayList<GameObject> init(int[][] array) {
 
         objectList = new ArrayList<>();
 
@@ -56,7 +56,7 @@ public class SimpleGfxGrid implements Grid {
             }
         }
 
-        System.out.println(objectList.size());
+        return objectList;
 
     }
 

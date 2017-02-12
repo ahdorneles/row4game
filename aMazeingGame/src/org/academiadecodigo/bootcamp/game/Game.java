@@ -22,12 +22,13 @@ import java.util.*;
 /**
  * Created by codecadet on 06/02/2017.
  */
-public class Game implements KeyboardHandler {
+public class Game {
 
     private int delay;
     private SimpleGfxGrid grid;
     private boolean runningGame = true;
     private ArrayList<GameObject> objectList;
+    private Level currentLevel = Level.LEVEL_1;
 
 
     public Game(int delay) {/// not sure if needs it
@@ -58,17 +59,12 @@ public class Game implements KeyboardHandler {
                 e.printStackTrace();
             }
 
-            Level currentLevel = Level.LEVEL_1;
-
             if (levelComplete()) {
                 for (GameObject o: objectList) {
                     o.getRectangle().delete();
                 }
                 objectList.clear();
-
-                System.out.println("---------------------> IS THIS EMPTY? " + objectList.size());
-
-                grid.init(nextLevel(currentLevel));
+                objectList = grid.init(nextLevel(currentLevel));
 
                 currentLevel = Level.values()[currentLevel.ordinal() + 1];
 
@@ -81,13 +77,13 @@ public class Game implements KeyboardHandler {
     }
 
     private boolean levelComplete() {
-        System.out.println("lvlcomp");
 
         int totalChecks = 0;
-
         int positiveChecks = 0;
 
         for (GameObject a : objectList) {
+            System.out.println(a);
+
             if (a instanceof Avatar) {
                 System.out.println("positive checks");
                 Avatar avatar = (Avatar) a;
@@ -119,17 +115,6 @@ public class Game implements KeyboardHandler {
         }
         return 0;
     }
-
-    @Override
-    public void keyPressed(KeyboardEvent keyboardEvent) {
-
-    }
-
-    @Override
-    public void keyReleased(KeyboardEvent keyboardEvent) {
-
-    }
-
 
 
 }
