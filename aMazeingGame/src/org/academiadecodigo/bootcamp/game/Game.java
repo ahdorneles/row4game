@@ -98,10 +98,9 @@ public class Game {
                 positiveChecks += confirmation(avatar);
             }
 
-            if (totalChecks != 0 && totalChecks == positiveChecks) {
-                return true;
-            }
-
+        }
+        if (totalChecks != 0 && totalChecks == positiveChecks) {
+            return true;
         }
         return false;
     }
