@@ -1,10 +1,7 @@
 package org.academiadecodigo.bootcamp.game;
 
 import org.academiadecodigo.bootcamp.Player;
-import org.academiadecodigo.bootcamp.gameObject.Avatar;
-import org.academiadecodigo.bootcamp.gameObject.FinishLine;
-import org.academiadecodigo.bootcamp.gameObject.GameObject;
-import org.academiadecodigo.bootcamp.gameObject.Wall;
+import org.academiadecodigo.bootcamp.gameObject.*;
 import org.academiadecodigo.bootcamp.grid.Grid;
 import org.academiadecodigo.bootcamp.grid.GridDirection;
 import org.academiadecodigo.bootcamp.grid.Level;
@@ -32,6 +29,7 @@ public class Game {
     private ArrayList<GameObject> objectList;
     public static Level currentLevel = Level.LEVEL_1;
     private Picture picture;
+    private Music music;
 
 
     public Game(int delay) {/// not sure if needs it
@@ -50,6 +48,9 @@ public class Game {
     }
 
     public void start() {
+        this.music = new Music();
+        music.startMusic();
+
 
         while (runningGame) {
             try {
