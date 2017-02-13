@@ -53,6 +53,11 @@ public class SimpleGfxGrid implements Grid {
                     case 3:
                         objectList.add(create(j, i, ObjectType.FINISH_LINE));
                         break;
+
+                    case 4:
+                        objectList.add(create(j, i, ObjectType.START_LEVEL));
+                        break;
+
                     case 10:
                         objectList.add(create(j, i, ObjectType.MENU));
                         break;
@@ -87,10 +92,17 @@ public class SimpleGfxGrid implements Grid {
                 FinishLine line = new FinishLine(position2);
                 returnObject = line;
                 break;
+
             case MENU:
                 SimpleGfxGridPosition position3 = new SimpleGfxGridPosition(i, j, this);
                 Menu menu = new Menu(position3);
                 returnObject = menu;
+                break;
+
+            case START_LEVEL:
+                SimpleGfxGridPosition position4 = new SimpleGfxGridPosition(i, j, this);
+                StartLevel start = new StartLevel(position4);
+                returnObject = start;
                 break;
 
         }
