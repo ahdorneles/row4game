@@ -84,7 +84,16 @@ public class KeyboardInput implements KeyboardHandler {
         }
         if (keyboardEvent.getKey() == keyboardEvent.KEY_SPACE) {
             if (!menuFlag) {
-                Iterator<GameObject> it = grid.getObjectList().iterator();
+
+                for (GameObject o : grid.getObjectList()) {
+                    if (o instanceof Menu) {
+                        Menu menu1 = (Menu) o;
+                        menu1.getPicture().delete();
+                        Menu.backckground.draw();
+                    }
+                }
+
+                /*Iterator<GameObject> it = grid.getObjectList().iterator();
                 while (it.hasNext()) {
                     GameObject menuPic = it.next();
                     if (menuPic instanceof Menu) {
@@ -93,7 +102,7 @@ public class KeyboardInput implements KeyboardHandler {
                     }
                     it.remove();
                     Menu.backckground.draw();
-                }
+                }*/
                 currentLevel.getLevel();
                 grid.init(game.nextLevel(Level.MENU));
                 currentLevel = Level.values()[Level.MENU.ordinal() + 1];

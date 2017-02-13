@@ -56,6 +56,7 @@ public class SimpleGfxGrid implements Grid {
 
                     case 4:
                         objectList.add(create(j, i, ObjectType.START_LEVEL));
+                        break;
 
                     case 10:
                         objectList.add(create(j, i, ObjectType.MENU));
