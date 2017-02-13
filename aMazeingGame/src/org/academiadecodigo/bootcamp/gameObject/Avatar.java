@@ -70,7 +70,7 @@ public class Avatar extends GameObject {
                 if (!collisionDetector.getCollided(getPos().getRow() - 1, getPos().getCol())) {
                     nextPictureSetup();
                     this.position.setRow(getPos().getRow() - 1);
-                    picture = new Picture((getPos().getCol() * super.cellSize()) + super.padding(), (getPos().getRow() * super.cellSize()) + super.padding(), "Resources/Avatar/UP/Avatar" + moveCounter + ".png");
+                    picture = new Picture((getPos().getCol() * super.cellSize()) + super.padding(), (getPos().getRow() * super.cellSize()) + super.padding(), "resources/Avatar/UP/Avatar" + moveCounter + ".png");
                     picture.draw();
                 }
                 lastDirection = direction;
@@ -81,7 +81,7 @@ public class Avatar extends GameObject {
                 if (!collisionDetector.getCollided(getPos().getRow() + 1, getPos().getCol())) {
                     nextPictureSetup();
                     this.position.setRow(getPos().getRow() + 1);
-                    picture = new Picture((getPos().getCol() * super.cellSize()) + super.padding(), (getPos().getRow() * super.cellSize()) + super.padding(), "Resources/Avatar/DOWN/Avatar" + moveCounter + ".png");
+                    picture = new Picture((getPos().getCol() * super.cellSize()) + super.padding(), (getPos().getRow() * super.cellSize()) + super.padding(), "resources/Avatar/DOWN/Avatar" + moveCounter + ".png");
                     picture.draw();
                 }
                 lastDirection = direction;
@@ -93,7 +93,7 @@ public class Avatar extends GameObject {
                 if (!collisionDetector.getCollided(getPos().getRow(), getPos().getCol() + 1)) {
                     nextPictureSetup();
                     this.position.setCol(getPos().getCol() + 1);
-                    picture = new Picture((getPos().getCol() * super.cellSize()) + super.padding(), (getPos().getRow() * super.cellSize()) + super.padding(), "Resources/Avatar/RIGHT/Avatar" + moveCounter + ".png");
+                    picture = new Picture((getPos().getCol() * super.cellSize()) + super.padding(), (getPos().getRow() * super.cellSize()) + super.padding(), "resources/Avatar/RIGHT/Avatar" + moveCounter + ".png");
                     picture.draw();
                 }
                 lastDirection = direction;
@@ -104,7 +104,7 @@ public class Avatar extends GameObject {
                 if (!collisionDetector.getCollided(getPos().getRow(), getPos().getCol() - 1)) {
                     nextPictureSetup();
                     this.position.setCol(getPos().getCol() - 1);
-                    picture = new Picture((getPos().getCol() * super.cellSize()) + super.padding(), (getPos().getRow() * super.cellSize()) + super.padding(), "Resources/Avatar/LEFT/Avatar" + moveCounter + ".png");
+                    picture = new Picture((getPos().getCol() * super.cellSize()) + super.padding(), (getPos().getRow() * super.cellSize()) + super.padding(), "resources/Avatar/LEFT/Avatar" + moveCounter + ".png");
                     picture.draw();
                 }
 
