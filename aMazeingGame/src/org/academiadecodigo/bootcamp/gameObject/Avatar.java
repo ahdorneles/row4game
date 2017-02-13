@@ -15,7 +15,6 @@ import java.io.DataInput;
  * Created by codecadet on 06/02/2017.
  */
 public class Avatar extends GameObject {
-    private static final double SPEED = 32;
     private SimpleGfxGridPosition position;
     private GridDirection direction;
     private SimpleGfxGrid grid;
