@@ -20,7 +20,6 @@ public class Avatar extends GameObject {
     private GridDirection direction;
     private SimpleGfxGrid grid;
     private CollisionDetector collisionDetector;
-    private Rectangle rectangle;
     private Picture picture;
     private int moveCounter;
     private GridDirection lastDirection = GridDirection.DOWN;
@@ -30,13 +29,8 @@ public class Avatar extends GameObject {
         this.position = position;
         grid = (SimpleGfxGrid) position.getGrid();
         collisionDetector = new CollisionDetector(this, position, grid);
-        picture = new Picture((getPos().getCol() * 32) + 10, (getPos().getRow() * 32) + 10, "Resources/Avatar/DOWN/Avatar0.png");
+        picture = new Picture((getPos().getCol() * super.cellSize()) + super.padding(), (getPos().getRow() * super.cellSize()) + super.padding(), "Resources/Avatar/DOWN/Avatar0.png");
         picture.draw();
-
-        //rectangle = new Rectangle((getPos().getCol() * 32) + 10, (getPos().getRow() * 32) + 10, 32, 32);
-        //rectangle.setColor(Color.BLUE);
-        //rectangle.draw();
-
     }
 
     public SimpleGfxGridPosition getPos() {
@@ -57,26 +51,16 @@ public class Avatar extends GameObject {
 
     private void nextPictureSetup() {
         picture.delete();
-        System.out.println("delete--------------------------------------------------");
-        System.out.println("movecounter: " + moveCounter + "direction: " + direction);
-        System.out.println("last direction " + lastDirection.toString());
 
         if (moveCounter >= 3 || lastDirection != direction) {
-            System.out.println(moveCounter + "--------------------------------------------");
             moveCounter = 0;
-            System.out.println("move counter 0-------------------------------------------");
         } else {
             moveCounter++;
-            System.out.println("move counter ++ -------------------------------------");
         }
     }
 
 
     public void move(GridDirection direction) {
-        int initialCol = this.getPos().getCol();
-        int initialRow = this.getPos().getRow();
-        System.out.println("Coluna " + initialCol);
-        System.out.println("Linha " + initialRow);
         this.direction = direction;
 
 
@@ -87,8 +71,7 @@ public class Avatar extends GameObject {
                 if (!collisionDetector.getCollided(getPos().getRow() - 1, getPos().getCol())) {
                     nextPictureSetup();
                     this.position.setRow(getPos().getRow() - 1);
-                    int finalRowUp = getPos().getRow();
-                    picture = new Picture((getPos().getCol() * 32) + 10, (getPos().getRow() * 32) + 10, "Resources/Avatar/UP/Avatar" + moveCounter + ".png");
+                    picture = new Picture((getPos().getCol() * super.cellSize()) + super.padding(), (getPos().getRow() * super.cellSize()) + super.padding(), "Resources/Avatar/UP/Avatar" + moveCounter + ".png");
                     picture.draw();
                 }
                 lastDirection = direction;
@@ -99,8 +82,7 @@ public class Avatar extends GameObject {
                 if (!collisionDetector.getCollided(getPos().getRow() + 1, getPos().getCol())) {
                     nextPictureSetup();
                     this.position.setRow(getPos().getRow() + 1);
-                    int finalRowDown = getPos().getRow();
-                    picture = new Picture((getPos().getCol() * 32) + 10, (getPos().getRow() * 32) + 10, "Resources/Avatar/DOWN/Avatar" + moveCounter + ".png");
+                    picture = new Picture((getPos().getCol() * super.cellSize()) + super.padding(), (getPos().getRow() * super.cellSize()) + super.padding(), "Resources/Avatar/DOWN/Avatar" + moveCounter + ".png");
                     picture.draw();
                 }
                 lastDirection = direction;
@@ -112,8 +94,7 @@ public class Avatar extends GameObject {
                 if (!collisionDetector.getCollided(getPos().getRow(), getPos().getCol() + 1)) {
                     nextPictureSetup();
                     this.position.setCol(getPos().getCol() + 1);
-                    int finalColRight = getPos().getCol();
-                    picture = new Picture((getPos().getCol() * 32) + 10, (getPos().getRow() * 32) + 10, "Resources/Avatar/RIGHT/Avatar" + moveCounter + ".png");
+                    picture = new Picture((getPos().getCol() * super.cellSize()) + super.padding(), (getPos().getRow() * super.cellSize()) + super.padding(), "Resources/Avatar/RIGHT/Avatar" + moveCounter + ".png");
                     picture.draw();
                 }
                 lastDirection = direction;
@@ -124,8 +105,7 @@ public class Avatar extends GameObject {
                 if (!collisionDetector.getCollided(getPos().getRow(), getPos().getCol() - 1)) {
                     nextPictureSetup();
                     this.position.setCol(getPos().getCol() - 1);
-                    int finalColLeft = getPos().getCol();
-                    picture = new Picture((getPos().getCol() * 32) + 10, (getPos().getRow() * 32) + 10, "Resources/Avatar/LEFT/Avatar" + moveCounter + ".png");
+                    picture = new Picture((getPos().getCol() * super.cellSize()) + super.padding(), (getPos().getRow() * super.cellSize()) + super.padding(), "Resources/Avatar/LEFT/Avatar" + moveCounter + ".png");
                     picture.draw();
                 }
 
@@ -135,10 +115,6 @@ public class Avatar extends GameObject {
         }
 
 
-    }
-
-    public Rectangle getRectangle() {
-        return rectangle;
     }
 
     public Picture getPicture() {

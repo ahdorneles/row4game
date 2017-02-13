@@ -17,7 +17,6 @@ public class Music {
         AudioInputStream audioInputStream = null;
         try {
             if (soundURL == null) {
-                // to load when running from intellij
                 pathStr = pathStr.substring(1);
                 File file = new File(pathStr);
                 soundURL = file.toURI().toURL();

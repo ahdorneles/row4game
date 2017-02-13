@@ -10,15 +10,14 @@ import java.security.Signature;
 /**
  * Created by codecadet on 11/02/17.
  */
-public class FinishLine extends GameObject{
+public class FinishLine extends GameObject {
 
     private SimpleGfxGridPosition position;
-    private Rectangle rectangle;
     private Picture picture;
 
-    public FinishLine (SimpleGfxGridPosition simpleGfxGridPosition) {
+    public FinishLine(SimpleGfxGridPosition simpleGfxGridPosition) {
         position = simpleGfxGridPosition;
-        picture = new Picture((getPos().getCol() * 32) + 10, (getPos().getRow() * 32) + 10, "Resources/Wall/FinishLine.png");
+        picture = new Picture((getPos().getCol() * super.cellSize()) + super.padding(), (getPos().getRow() * super.cellSize()) + super.padding(), "Resources/Wall/FinishLine.png");
         picture.draw();
     }
 
@@ -29,10 +28,6 @@ public class FinishLine extends GameObject{
 
     public void setPosition(SimpleGfxGridPosition position) {
         this.position = position;
-    }
-
-    public Rectangle getRectangle() {
-        return rectangle;
     }
 
     public Picture getPicture() {

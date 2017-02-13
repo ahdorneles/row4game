@@ -7,15 +7,14 @@ import org.academiadecodigo.simplegraphics.pictures.Picture;
 /**
  * Created by codecadet on 12/02/2017.
  */
-public class StartLevel extends GameObject{
+public class StartLevel extends GameObject {
 
     private SimpleGfxGridPosition position;
-    private Rectangle rectangle;
     private Picture picture;
 
     public StartLevel(SimpleGfxGridPosition simpleGfxGridPosition) {
         position = simpleGfxGridPosition;
-        picture = new Picture((getPos().getCol() * 32) + 10, (getPos().getRow() * 32) + 10, "Resources/Wall/Start.png");
+        picture = new Picture((getPos().getCol() * super.cellSize()) + super.padding(), (getPos().getRow() * super.cellSize()) + super.padding(), "Resources/Wall/Start.png");
         picture.draw();
     }
 
@@ -26,10 +25,6 @@ public class StartLevel extends GameObject{
 
     public void setPosition(SimpleGfxGridPosition position) {
         this.position = position;
-    }
-
-    public Rectangle getRectangle() {
-        return rectangle;
     }
 
     public Picture getPicture() {

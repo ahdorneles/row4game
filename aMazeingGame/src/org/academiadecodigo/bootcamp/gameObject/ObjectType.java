@@ -11,5 +11,4 @@ public enum ObjectType {
     MENU,
     START_LEVEL,
     FINAL
-
 }

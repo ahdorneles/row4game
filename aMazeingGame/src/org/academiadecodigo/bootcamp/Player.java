@@ -14,7 +14,6 @@ import java.util.List;
  * Created by codecadet on 06/02/2017.
  */
 public class Player implements KeyboardHandler {
-    private int score;
     private Avatar avatar;
     private String name;
     private boolean stageCleared;
@@ -43,6 +42,7 @@ public class Player implements KeyboardHandler {
         eventLeft.setKey(KeyboardEvent.KEY_LEFT);
         k.addEventListener(eventLeft);
     }
+
     @Override
     public void keyPressed(KeyboardEvent keyboardEvent) {
         switch (keyboardEvent.getKey()) {

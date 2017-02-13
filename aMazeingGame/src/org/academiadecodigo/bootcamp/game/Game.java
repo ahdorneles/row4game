@@ -32,7 +32,7 @@ public class Game {
     private Music music;
 
 
-    public Game(int delay) {/// not sure if needs it
+    public Game(int delay) {
         this.delay = delay;
         this.objectList = null;
     }
@@ -40,9 +40,6 @@ public class Game {
     public void init() {
         grid = new SimpleGfxGrid(20, 20);
         grid.init(Level.MENU.getLevel());
-        //Rectangle rectangle = new Rectangle(grid.getPADDING(), grid.getPADDING(), grid.getCELL_SIZE() * grid.getCols(), grid.getCELL_SIZE() * grid.getRows());
-        //rectangle.setColor(Color.BLUE);
-        //rectangle.draw();
         KeyboardInput keyboardInput = new KeyboardInput(grid);
         objectList = grid.getObjectList();
     }
@@ -63,8 +60,6 @@ public class Game {
                 for (GameObject o : grid.getObjectList()) {
                     o.getPicture().delete();
                 }
-                //objectList.clear();
-                //objectList = grid.init(nextLevel(currentLevel));
 
                 grid.init(nextLevel(currentLevel));
 
@@ -79,21 +74,15 @@ public class Game {
     }
 
     private boolean levelComplete() {
-        System.out.println("Checking level complete");
 
         int totalChecks = 0;
         int positiveChecks = 0;
 
-        System.out.println(grid.getObjectList().size());
-
         for (GameObject a : grid.getObjectList()) {
-            //System.out.println(a);
 
             if (a instanceof Avatar) {
-                System.out.println("positive checks");
                 Avatar avatar = (Avatar) a;
                 totalChecks++;
-                System.out.println(totalChecks + " total");
                 positiveChecks += confirmation(avatar);
             }
 
@@ -105,13 +94,10 @@ public class Game {
     }
 
     private int confirmation(Avatar a) {
-        System.out.println("first conf");
         for (GameObject f : grid.getObjectList()) {
             if (f instanceof FinishLine) {
                 FinishLine line = (FinishLine) f;
-                System.out.println("pre confirm");
                 if (a.getPos().compare(line.getPos())) {
-                    System.out.println("confirm 1");
                     return 1;
                 }
             }

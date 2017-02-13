@@ -13,15 +13,11 @@ import org.academiadecodigo.simplegraphics.pictures.Picture;
 public class Wall extends GameObject {
 
     private SimpleGfxGridPosition position;
-    private Rectangle rectangle;
     private Picture picture;
 
     public Wall(SimpleGfxGridPosition simpleGfxGridPosition) {
         position = simpleGfxGridPosition;
-        //rectangle = new Rectangle((getPos().getCol() * 25) + 10,(getPos().getRow()* 25) + 10 ,25,25);
-        //rectangle.setColor(Color.GREEN);
-        //rectangle.fill();
-        picture = new Picture((getPos().getCol() * 32) + 10, (getPos().getRow() * 32) + 10, "Resources/Wall/Wall3.png");
+        picture = new Picture((getPos().getCol() * super.cellSize()) + super.padding(), (getPos().getRow() * super.cellSize()) + super.padding(), "Resources/Wall/Wall3.png");
         picture.draw();
     }
 
@@ -31,10 +27,6 @@ public class Wall extends GameObject {
 
     public void setPosition(SimpleGfxGridPosition position) {
         this.position = position;
-    }
-
-    public Rectangle getRectangle() {
-        return rectangle;
     }
 
     public void setPicture(Picture picture) {

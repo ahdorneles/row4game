@@ -5,15 +5,10 @@ import org.academiadecodigo.bootcamp.grid.GridDirection;
 import org.academiadecodigo.bootcamp.grid.Level;
 import org.academiadecodigo.bootcamp.grid.SimpleGfxGrid;
 import org.academiadecodigo.bootcamp.grid.position.SimpleGfxGridPosition;
-import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
 
 /**
  * Created by codecadet on 11/02/2017.
@@ -27,6 +22,7 @@ public class KeyboardInput implements KeyboardHandler {
     private SimpleGfxGridPosition simpleGfxGridPosition;
     private Game game;
     private boolean menuFlag = false;
+    public static boolean creditsFlag = false;
 
 
     public KeyboardInput(SimpleGfxGrid grid) {
@@ -71,17 +67,12 @@ public class KeyboardInput implements KeyboardHandler {
     public void keyPressed(KeyboardEvent keyboardEvent) {
         this.simpleGfxGridPosition = new SimpleGfxGridPosition(800, 600, grid);
         this.game = new Game(1000);
-        if (keyboardEvent.getKey() == keyboardEvent.KEY_Q) {
+        if (keyboardEvent.getKey() == keyboardEvent.KEY_Q && !creditsFlag) {
             credits = new Credits(simpleGfxGridPosition);
             grid.getObjectList().clear();
             menuFlag = true;
-
-            /*Iterator<GameObject> it = grid.getObjectList().iterator();
-            while (it.hasNext()) {
-                it.next().getRectangle().delete();
-                it.remove();
-                it.next();*/
         }
+
         if (keyboardEvent.getKey() == keyboardEvent.KEY_SPACE) {
             if (!menuFlag) {
 
@@ -89,20 +80,10 @@ public class KeyboardInput implements KeyboardHandler {
                     if (o instanceof Menu) {
                         Menu menu1 = (Menu) o;
                         menu1.getPicture().delete();
-                        Menu.backckground.draw();
+                        Menu.background.draw();
                     }
                 }
 
-                /*Iterator<GameObject> it = grid.getObjectList().iterator();
-                while (it.hasNext()) {
-                    GameObject menuPic = it.next();
-                    if (menuPic instanceof Menu) {
-                        Menu menu = (Menu) menuPic;
-                        menu.getPicture().delete();
-                    }
-                    it.remove();
-                    Menu.backckground.draw();
-                }*/
                 currentLevel.getLevel();
                 grid.init(game.nextLevel(Level.MENU));
                 currentLevel = Level.values()[Level.MENU.ordinal() + 1];
@@ -124,13 +105,7 @@ public class KeyboardInput implements KeyboardHandler {
         for (GameObject avatar1 : grid.getObjectList()) {
             if (avatar1 instanceof Avatar) {
 
-                System.out.println("2nd list verification " + grid.getObjectList());
-
                 Avatar avatar = (Avatar) avatar1;
-
-                System.out.println("Posição do avatar" + ((Avatar) avatar).getPos());
-                System.out.println("List size " + grid.getObjectList().size());
-
 
                 switch (keyboardEvent.getKey()) {
                     case KeyboardEvent.KEY_UP:
