@@ -15,7 +15,7 @@ public class Credits {
 
     public Credits(SimpleGfxGridPosition simpleGfxGridPosition) {
         position = simpleGfxGridPosition;
-        picture = new Picture(SimpleGfxGrid.PADDING, SimpleGfxGrid.PADDING, "Resources/Credits/Credits.png");
+        picture = new Picture(SimpleGfxGrid.PADDING, SimpleGfxGrid.PADDING, "resources/Credits/Credits.png");
         picture.draw();
     }
 

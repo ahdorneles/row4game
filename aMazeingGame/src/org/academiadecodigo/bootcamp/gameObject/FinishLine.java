@@ -17,7 +17,7 @@ public class FinishLine extends GameObject {
 
     public FinishLine(SimpleGfxGridPosition simpleGfxGridPosition) {
         position = simpleGfxGridPosition;
-        picture = new Picture((getPos().getCol() * super.cellSize()) + super.padding(), (getPos().getRow() * super.cellSize()) + super.padding(), "Resources/Wall/FinishLine.png");
+        picture = new Picture((getPos().getCol() * super.cellSize()) + super.padding(), (getPos().getRow() * super.cellSize()) + super.padding(), "resources/Wall/FinishLine.png");
         picture.draw();
     }
 

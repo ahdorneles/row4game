@@ -16,7 +16,7 @@ public class Final extends GameObject {
 
         public Final(SimpleGfxGridPosition simpleGfxGridPosition) {
             KeyboardInput.creditsFlag = true;
-            picture = new Picture(SimpleGfxGrid.PADDING, SimpleGfxGrid.PADDING, "Resources/FinalStage/stageCleared.png");
+            picture = new Picture(SimpleGfxGrid.PADDING, SimpleGfxGrid.PADDING, "resources/FinalStage/stageCleared.png");
             picture.draw();
         }
 

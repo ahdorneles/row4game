@@ -14,7 +14,7 @@ public class StartLevel extends GameObject {
 
     public StartLevel(SimpleGfxGridPosition simpleGfxGridPosition) {
         position = simpleGfxGridPosition;
-        picture = new Picture((getPos().getCol() * super.cellSize()) + super.padding(), (getPos().getRow() * super.cellSize()) + super.padding(), "Resources/Wall/Start.png");
+        picture = new Picture((getPos().getCol() * super.cellSize()) + super.padding(), (getPos().getRow() * super.cellSize()) + super.padding(), "resources/Wall/Start.png");
         picture.draw();
     }
 

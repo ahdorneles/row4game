@@ -17,7 +17,7 @@ public class Wall extends GameObject {
 
     public Wall(SimpleGfxGridPosition simpleGfxGridPosition) {
         position = simpleGfxGridPosition;
-        picture = new Picture((getPos().getCol() * super.cellSize()) + super.padding(), (getPos().getRow() * super.cellSize()) + super.padding(), "Resources/Wall/Wall3.png");
+        picture = new Picture((getPos().getCol() * super.cellSize()) + super.padding(), (getPos().getRow() * super.cellSize()) + super.padding(), "resources/Wall/Wall3.png");
         picture.draw();
     }
 

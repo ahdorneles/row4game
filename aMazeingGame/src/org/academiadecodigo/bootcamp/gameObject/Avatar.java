@@ -29,7 +29,7 @@ public class Avatar extends GameObject {
         this.position = position;
         grid = (SimpleGfxGrid) position.getGrid();
         collisionDetector = new CollisionDetector(this, position, grid);
-        picture = new Picture((getPos().getCol() * super.cellSize()) + super.padding(), (getPos().getRow() * super.cellSize()) + super.padding(), "Resources/Avatar/DOWN/Avatar0.png");
+        picture = new Picture((getPos().getCol() * super.cellSize()) + super.padding(), (getPos().getRow() * super.cellSize()) + super.padding(), "resources/Avatar/DOWN/Avatar0.png");
         picture.draw();
     }
 
