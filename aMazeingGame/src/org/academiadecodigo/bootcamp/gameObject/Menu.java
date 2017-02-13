@@ -9,12 +9,11 @@ import org.academiadecodigo.simplegraphics.pictures.Picture;
  */
 public class Menu extends GameObject {
     private SimpleGfxGridPosition position;
-    private Rectangle rectangle;
     private Picture picture;
     public static Picture backckground;
 
     public Menu(SimpleGfxGridPosition simpleGfxGridPosition) {
-        picture = new Picture(SimpleGfxGrid.PADDING, SimpleGfxGrid.PADDING, "Resources/Menu/FirstImage_960px608.jpg");
+        picture = new Picture(SimpleGfxGrid.PADDING, SimpleGfxGrid.PADDING, "Resources/Menu/firstImage.png");
         backckground = new Picture(SimpleGfxGrid.PADDING, SimpleGfxGrid.PADDING, "Resources/Floor/Floor.jpg");
         picture.draw();
     }
@@ -27,9 +26,6 @@ public class Menu extends GameObject {
         this.position = position;
     }
 
-    public Rectangle getRectangle() {
-        return rectangle;
-    }
 
     public Picture getPicture() {
         return picture;

@@ -9,5 +9,7 @@ public enum ObjectType {
     AVATAR,
     FINISH_LINE,
     MENU,
-    START_LEVEL
+    START_LEVEL,
+    FINAL
+
 }

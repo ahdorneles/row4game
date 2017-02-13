@@ -12,7 +12,7 @@ import java.net.URL;
  */
 public class Music {
     public void startMusic() {
-        String pathStr = "/Resources/Music/Retro1 140.wav";
+        String pathStr = "/Resources/Music/mm.wav";
         URL soundURL = Game.class.getResource(pathStr);
         AudioInputStream audioInputStream = null;
         try {

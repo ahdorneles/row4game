@@ -21,7 +21,7 @@ public class Wall extends GameObject {
         //rectangle = new Rectangle((getPos().getCol() * 25) + 10,(getPos().getRow()* 25) + 10 ,25,25);
         //rectangle.setColor(Color.GREEN);
         //rectangle.fill();
-        picture = new Picture((getPos().getCol() * 32) + 10, (getPos().getRow() * 32) + 10, "/Users/codecadet/Desktop/row4Game/row4game/aMazeingGame/Resources/Wall/Wall3.png");
+        picture = new Picture((getPos().getCol() * 32) + 10, (getPos().getRow() * 32) + 10, "Resources/Wall/Wall3.png");
         picture.draw();
     }
 
