@@ -2,9 +2,6 @@ package org.academiadecodigo.bootcamp.grid;
 
 import org.academiadecodigo.bootcamp.gameObject.*;
 import org.academiadecodigo.bootcamp.grid.position.SimpleGfxGridPosition;
-import org.academiadecodigo.simplegraphics.graphics.Color;
-import org.academiadecodigo.simplegraphics.graphics.Rectangle;
-import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 import java.util.ArrayList;
 
@@ -122,10 +119,6 @@ public class SimpleGfxGrid implements Grid {
         return objectList;
     }
 
-    public void setObjectList(ArrayList<GameObject> objectList) {
-        this.objectList = objectList;
-    }
-
     @Override
     public int getCols() {
         return cols;
@@ -134,26 +127,6 @@ public class SimpleGfxGrid implements Grid {
     @Override
     public int getRows() {
         return rows;
-    }
-
-    public int getCellSize() {
-        return CELL_SIZE;
-    }
-
-    public int getHeight() {
-        return getRows() * getCellSize();
-    }
-
-    public int getWidth() {
-        return getCols() * getCellSize();
-    }
-
-    public int getPADDING() {
-        return PADDING;
-    }
-
-    public int getCELL_SIZE() {
-        return CELL_SIZE;
     }
 }
 

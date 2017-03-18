@@ -9,10 +9,10 @@ import java.util.ArrayList;
  */
 public interface Grid {
 
-    public ArrayList<GameObject> init(int[][] array);
+    ArrayList<GameObject> init(int[][] array);
 
-    public int getCols();
+    int getCols();
 
-    public int getRows();
+    int getRows();
 
 }

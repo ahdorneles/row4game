@@ -1,7 +1,6 @@
 package org.academiadecodigo.bootcamp.gameObject;
 
 import org.academiadecodigo.bootcamp.grid.position.SimpleGfxGridPosition;
-import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 /**

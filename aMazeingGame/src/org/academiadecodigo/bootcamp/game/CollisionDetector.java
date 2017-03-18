@@ -6,13 +6,10 @@ import org.academiadecodigo.bootcamp.gameObject.Wall;
 
 import org.academiadecodigo.bootcamp.gameObject.Avatar;
 import org.academiadecodigo.bootcamp.gameObject.GameObject;
-import org.academiadecodigo.bootcamp.grid.GridDirection;
 import org.academiadecodigo.bootcamp.grid.SimpleGfxGrid;
 import org.academiadecodigo.bootcamp.grid.position.SimpleGfxGridPosition;
-
 import java.util.ArrayList;
 
-import static org.academiadecodigo.bootcamp.grid.GridDirection.UP;
 
 
 public class CollisionDetector {

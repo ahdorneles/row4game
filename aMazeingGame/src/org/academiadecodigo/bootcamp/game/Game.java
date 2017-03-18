@@ -1,20 +1,9 @@
 package org.academiadecodigo.bootcamp.game;
 
-import org.academiadecodigo.bootcamp.Player;
 import org.academiadecodigo.bootcamp.gameObject.*;
-import org.academiadecodigo.bootcamp.grid.Grid;
-import org.academiadecodigo.bootcamp.grid.GridDirection;
 import org.academiadecodigo.bootcamp.grid.Level;
 import org.academiadecodigo.bootcamp.grid.SimpleGfxGrid;
-import org.academiadecodigo.bootcamp.grid.position.SimpleGfxGridPosition;
-import org.academiadecodigo.simplegraphics.graphics.Color;
-import org.academiadecodigo.simplegraphics.graphics.Rectangle;
-import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
-import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
-import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
-import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
-import sun.jvm.hotspot.runtime.Thread;
 
 import java.util.*;
 
