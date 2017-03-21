@@ -1,0 +1,11 @@
+/Users/codecadet/Desktop/ProjectsIJ/RegisterMVN/src/main/java/org/academiadecodigo/bootcamp/Main.java
+/Users/codecadet/Desktop/ProjectsIJ/RegisterMVN/src/main/java/org/academiadecodigo/bootcamp/service/ServiceRegistry.java
+/Users/codecadet/Desktop/ProjectsIJ/RegisterMVN/src/main/java/org/academiadecodigo/bootcamp/model/User.java
+/Users/codecadet/Desktop/ProjectsIJ/RegisterMVN/src/main/java/org/academiadecodigo/bootcamp/Navigation.java
+/Users/codecadet/Desktop/ProjectsIJ/RegisterMVN/src/main/java/org/academiadecodigo/bootcamp/service/user/MockUserService.java
+/Users/codecadet/Desktop/ProjectsIJ/RegisterMVN/src/main/java/org/academiadecodigo/bootcamp/controller/AfterLoginController.java
+/Users/codecadet/Desktop/ProjectsIJ/RegisterMVN/src/main/java/org/academiadecodigo/bootcamp/service/Service.java
+/Users/codecadet/Desktop/ProjectsIJ/RegisterMVN/src/main/java/org/academiadecodigo/bootcamp/controller/Controller.java
+/Users/codecadet/Desktop/ProjectsIJ/RegisterMVN/src/main/java/org/academiadecodigo/bootcamp/service/user/JdbcUserService.java
+/Users/codecadet/Desktop/ProjectsIJ/RegisterMVN/src/main/java/org/academiadecodigo/bootcamp/persistence/ConnectionManager.java
+/Users/codecadet/Desktop/ProjectsIJ/RegisterMVN/src/main/java/org/academiadecodigo/bootcamp/service/user/UserService.java

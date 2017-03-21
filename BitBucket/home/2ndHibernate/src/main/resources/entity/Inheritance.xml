@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="org.academiadecodigo.bootcamp.inheritance.Vehicle" table="vehicle">
+        <id name="id" column="id" type="int">
+            <generator class="identity"/>
+        </id>
+        <discriminator column="vehicle_type" type="string"/>
+        <property name="name" column="name" type="string"/>
+
+        <subclass name="org.academiadecodigo.bootcamp.inheritance.Boat" discriminator-value="">
+            <property name="engines" column="engines" type="int"/>
+        </subclass>
+
+    </class>
+
+</hibernate-mapping>
