@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="org.academiadecodigo.mappings.component.Customer" table="customer">
+
+        <id name="id" column="id" type="int">
+            <generator class="identity"/>
+        </id>
+
+        <property name="name" column="name" type="string"/>
+        <component name="address" class="org.academiadecodigo.mappings.component.Address">
+            <property name="city" column="city" type="string"/>
+            <property name="street" column="street" type="string"/>
+            <property name="number" column="number" type="string"/>
+        </component>
+
+
+    </class>
+
+
+
+</hibernate-mapping>

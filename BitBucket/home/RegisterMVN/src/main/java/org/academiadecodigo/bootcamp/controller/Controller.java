@@ -26,7 +26,7 @@ public class Controller implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        userService = (UserService) ServiceRegistry.getInstance().getServiceValue("UserService");
+        userService = (UserService) ServiceRegistry.getInstance().getServiceValue(UserService.class.getSimpleName());
 
     }
 
@@ -55,6 +55,10 @@ public class Controller implements Initializable {
     private Label soutLabel; // Value injected by FXMLLoader
 
     @FXML
+    void textHandler(KeyEvent event) {
+    }
+
+    @FXML
     void handleButtonPressed(ActionEvent event) {
 
 
@@ -81,9 +85,6 @@ public class Controller implements Initializable {
         }
     }
 
-    @FXML
-    void textHandler(KeyEvent event) {
-    }
 
     public void register() {
         if (inRegister == true) {
@@ -99,7 +100,6 @@ public class Controller implements Initializable {
     }
 
     public void login() {
-
         if (inLogin == true) {
             System.out.println("I am Login2");
             if (userService.authenticate(userText.getText(), passText.getText()) == true) {
@@ -112,7 +112,6 @@ public class Controller implements Initializable {
             System.out.println("Wrong Credentials");
             soutLabel.setVisible(true);
             soutLabel.setText("Wrong Credentials");
-
         }
     }
 
@@ -125,7 +124,6 @@ public class Controller implements Initializable {
         }
         return true;
     }
-
 
 }
 

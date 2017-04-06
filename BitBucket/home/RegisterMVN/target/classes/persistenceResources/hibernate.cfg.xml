@@ -6,7 +6,7 @@
 <hibernate-configuration>
     <session-factory>
         <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="connection.url">jdbc:mysql://localhost:3306/register","root", ""</property>
+        <property name="connection.url">jdbc:mysql://localhost:3306/register</property>
         <property name="connection.username">root</property>
         <!-- JDBC connection pool (use the built-in ) -->
         <property name="connection.pool_size">1</property>
@@ -18,5 +18,7 @@
         <property name="hbm2ddl.auto">create</property>
         <!-- Show generated SQL for debug purposes -->
         <property name="hibernate.show_sql">true</property>
+        <mapping resource="persistenceResources/User.hbm.xml"/>
+        <mapping resource="persistenceResources/Role.hbm.xml"/>
     </session-factory>
 </hibernate-configuration>

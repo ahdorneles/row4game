@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="org.academiadecodigo.mappings.inheritance.Vehicle" table="vehicle">
+
+        <id name="id" column="id" type="int">
+            <generator class="increment"/>
+        </id>
+
+        <property name="name" column="name" type="string"/>
+        <property name="speed" column="speed" type="int"/>
+
+        <joined-subclass name="org.academiadecodigo.mappings.inheritance.Boat" table="boat">
+            <key column="id"/>
+            <property name="engines" column="engines" type="int"/>
+        </joined-subclass>
+
+
+        <joined-subclass name="org.academiadecodigo.mappings.inheritance.Car" table="car">
+            <key column="id"/>
+            <property name="gears" column="gears" type="int"/>
+        </joined-subclass>
+
+
+    </class>
+
+
+
+</hibernate-mapping>

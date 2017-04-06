@@ -20,7 +20,7 @@ public class AfterLoginController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        userService = (UserService) ServiceRegistry.getInstance().getServiceValue("JdbcUserService");
+        userService = (UserService) ServiceRegistry.getInstance().getServiceValue(UserService.class.getSimpleName());
 
     }
 

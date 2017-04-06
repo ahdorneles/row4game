@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="org.academiadecodigo.mappings.one2many.Category" table="category">
+
+        <id name="id" type="int" column="id">
+            <generator class="identity"/>
+        </id>
+
+        <property name="name" column="name" type="string"/>
+
+        <set name="products" cascade="all">
+            <key column="category_id"/>
+            <one-to-many class="org.academiadecodigo.mappings.one2many.Product"/>
+        </set>
+
+
+    </class>
+
+
+</hibernate-mapping>

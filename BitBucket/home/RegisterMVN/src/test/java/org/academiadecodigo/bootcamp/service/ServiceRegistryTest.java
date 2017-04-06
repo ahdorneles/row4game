@@ -1,7 +1,7 @@
 package org.academiadecodigo.bootcamp.service;
 
-import org.academiadecodigo.bootcamp.persistence.ConnectionManager;
-import org.academiadecodigo.bootcamp.service.user.JdbcUserService;
+import org.academiadecodigo.bootcamp.service.jdbc.ConnectionManager;
+import org.academiadecodigo.bootcamp.service.jdbc.JdbcUserService;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
